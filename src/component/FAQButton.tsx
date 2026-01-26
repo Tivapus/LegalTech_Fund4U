@@ -27,9 +27,6 @@ export default function FAQButton() {
           boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
         },
       }}
-      onClick={() => {
-        alert("คำถามที่พบบ่อย (FAQ) กำลังจะมาเร็วๆ นี้!");
-      }}
     >
       <HelpOutlineIcon sx={{ mr: { xs: 0, sm: 1 } }} />
       <Box

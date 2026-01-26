@@ -12,9 +12,9 @@ import {
 import FAQButton from "./FAQButton";
 import { useRouter } from "next/navigation";
 
-type LayoutProps = { children: ReactNode };
+type VisitorNavbarProps = { children: ReactNode };
 
-export default function Layout({ children }: LayoutProps) {
+export default function VisitorNavbar({ children }: VisitorNavbarProps) {
   const router = useRouter();
   function toHome() {
     router.push("/home");

@@ -21,4 +21,11 @@ export const users: User[] = [
         password: "sme",
         role: "sme",
     },
+    {
+        id: "3",
+        name: "Admin",
+        email: "admin@fund4u.com",
+        password: "admin",
+        role: "admin",
+    }
 ];
