@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Card, Typography, Button, TextField } from "@mui/material";
+import { Box, Card, Typography, Button, TextField, Stack } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { users } from "@/data/user";
@@ -23,7 +23,7 @@ export default function LoginPage() {
       return;
     }
     if (user.role === "sme") {
-      router.push("/sme");
+      router.push("/sme/verification");
     } else if (user.role === "investor") {
       router.push("/investor");
     }
@@ -125,10 +125,48 @@ export default function LoginPage() {
             >
               เข้าสู่ระบบ
             </Button>
+
+            {/* Quick Login Shortcuts */}
+            <Box sx={{ width: "100%", mt: 2 }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ mb: 1, display: "block", textAlign: "center" }}
+              >
+                Quick Login (For Testing)
+              </Typography>
+              <Stack direction="row" spacing={2}>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  onClick={() => {
+                    setEmail("sme@fund4u.com");
+                    setPassword("sme");
+                  }}
+                  sx={{ borderRadius: 2, textTransform: "none" }}
+                >
+                  SME
+                </Button>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  onClick={() => {
+                    setEmail("investor@fund4u.com");
+                    setPassword("investor");
+                  }}
+                  sx={{ borderRadius: 2, textTransform: "none" }}
+                >
+                  Investor
+                </Button>
+              </Stack>
+            </Box>
+
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
+              sx={{ fontSize: { xs: "0.9rem", sm: "1rem" }, mt: 2 }}
             >
               ยังไม่มีบัญชี?{" "}
               <Button

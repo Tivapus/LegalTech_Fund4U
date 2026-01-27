@@ -36,7 +36,7 @@ export const posts: Post[] = [
     title: "เปิดสาขาสองที่เชียงใหม่",
     description:
       "ป้าใคร่แอ่วเจียงใหม่ขนาดเจ้า ต้องการเงินทุนเพื่อขยายรสชาติก๋วยเตี๋ยวสูตรดั้งเดิมให้ชาวเชียงใหม่ได้ลิ้มลอง",
-    logo: "https://api.dicebear.com/7.x/initials/svg?seed=PN&backgroundColor=ff6b6b",
+    logo: "/image.png",
     target: 120000,
     history: [
       { month: "2025-08", amount: 1200 },
