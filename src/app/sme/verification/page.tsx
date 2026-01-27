@@ -226,13 +226,14 @@ export default function SMEVerificationPage() {
         `Action required: ${stepErrors[0]}${stepErrors.length > 1 ? ` (+${stepErrors.length - 1} more)` : ""}`,
         "error",
       );
+    } else {
+      setActiveStep((p) => p + 1);
     }
 
     if (activeStep === STEPS.length - 1) {
       router.push("/sme/campaign");
       return;
     }
-    setActiveStep((p) => p + 1);
   };
 
   const handleBack = () => {
