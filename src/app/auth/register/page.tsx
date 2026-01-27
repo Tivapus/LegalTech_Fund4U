@@ -2,257 +2,183 @@
 
 import {
   Box,
-  Card,
   Typography,
   Button,
   Stack,
   TextField,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
 
-/* =======================
-   Style: Role Selection Card
-======================= */
+const gradientText = {
+  background: "linear-gradient(90deg, #1e88e5 0%, #8e24aa 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+};
+
 const roleCardStyle = {
   cursor: "pointer",
-  borderRadius: 3,
-  paddingY: 4,
-  paddingX: 3,
+  border: "1px solid #e5e7eb",
+  borderRadius: 4,
+  padding: 4,
   width: { xs: "100%", sm: "50%" },
   textAlign: "center",
-  border: "1px solid #E0E0E0",
+  backgroundColor: "#fff",
   transition: "all 0.25s ease",
-  backgroundColor: "#FFFFFF",
-
   "&:hover": {
     transform: "translateY(-6px)",
-    boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
   },
 };
 
 function RegisterContent() {
-  const [form, setForm] = React.useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    companyName: "",
-    juristicId: "",
-    fullName: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const signupType = searchParams.get("signup");
 
-  /* =======================
-     SME REGISTER
-  ======================= */
-  if (signupType === "sme") {
-    return (
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "#F7F9FC",
-          py: 8,
-          px: 2,
+  const isSME = signupType === "sme";
+  const isInvestor = signupType === "investor";
+
+  const [form, setForm] = React.useState({
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const renderForm = () => (
+    <Box
+      sx={{
+        maxWidth: 420,
+        mx: "auto",
+        mt: 4,
+        backgroundColor: "#fff",
+        p: 4,
+        borderRadius: 4,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+      }}
+    >
+      <TextField fullWidth label="อีเมล" name="email" margin="normal" onChange={handleChange} />
+
+      <TextField
+        fullWidth
+        label="เบอร์มือถือ"
+        name="phone"
+        margin="normal"
+        onChange={handleChange}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">🇹🇭 +66</InputAdornment>,
         }}
+      />
+
+      <TextField
+        fullWidth
+        label="รหัสผ่าน"
+        type={showPassword ? "text" : "password"}
+        name="password"
+        margin="normal"
+        onChange={handleChange}
+        helperText="ขั้นต่ำ 8 ตัวอักษร, ตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว และตัวเลขอย่างน้อย 1 ตัว"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <TextField
+        fullWidth
+        label="ยืนยันรหัสผ่าน"
+        type="password"
+        name="confirmPassword"
+        margin="normal"
+        onChange={handleChange}
+      />
+
+      <Button
+        fullWidth
+        sx={{
+          mt: 3,
+          py: 1.2,
+          fontWeight: 700,
+          color: "white",
+          borderRadius: 2,
+          background: "linear-gradient(90deg, #1e88e5 0%, #8e24aa 100%)",
+        }}
+        onClick={() => router.push("/auth/login")}
       >
-        <Box sx={{ textAlign: "center", mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 800,
-              background: "linear-gradient(90deg, #1E88E5, #7E57C2)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              mb: 1,
-            }}
-          >
-            Register for SME
-          </Typography>
+        สมัครสมาชิก
+      </Button>
 
-          <Typography sx={{ color: "#5F6368" }}>
-            กรุณากรอกข้อมูลเพื่อสมัครสมาชิกในฐานะผู้ระดมทุน
-          </Typography>
-        </Box>
+      <Button fullWidth sx={{ mt: 2, color: "#555" }} onClick={() => router.push("/auth/register")}>
+        กลับหน้าเลือกประเภท
+      </Button>
+    </Box>
+  );
 
-        <Card
-          sx={{
-            maxWidth: 420,
-            mx: "auto",
-            p: 4,
-            borderRadius: 3,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          }}
-        >
-          <TextField fullWidth label="Email" name="email" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="Password" type="password" name="password" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="Confirm Password" type="password" name="confirmPassword" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="ชื่อกิจการ" name="companyName" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="เลขนิติบุคคล" name="juristicId" margin="normal" onChange={handleChange} />
+  if (isSME || isInvestor) {
+    return (
+      <Box sx={{ py: 8, px: 2, backgroundColor: "#f9fafb" }}>
+        <Typography variant="h4" fontWeight={800} textAlign="center" sx={gradientText}>
+          {isSME ? "Register as SME" : "Register as Investor"}
+        </Typography>
 
-          <Button
-            fullWidth
-            size="large"
-            sx={{
-              mt: 3,
-              py: 1.4,
-              bgcolor: "#1E88E5",
-              color: "white",
-              borderRadius: 2,
-              fontWeight: 600,
-              "&:hover": { bgcolor: "#1565C0" },
-            }}
-            onClick={() => console.log("SME Register:", form)}
-          >
-            สมัครสมาชิก
-          </Button>
+        <Typography textAlign="center" color="text.secondary" mt={1}>
+          กรุณากรอกข้อมูลเพื่อสมัครสมาชิก
+        </Typography>
 
-          <Button
-            fullWidth
-            variant="outlined"
-            sx={{
-              mt: 2,
-              borderColor: "#1E88E5",
-              color: "#1E88E5",
-            }}
-            onClick={() => router.push("/auth/register")}
-          >
-            กลับหน้าเลือกประเภท
-          </Button>
-        </Card>
+        {renderForm()}
       </Box>
     );
   }
 
-  /* =======================
-     INVESTOR REGISTER
-  ======================= */
-  if (signupType === "investor") {
-    return (
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "#F7F9FC",
-          py: 8,
-          px: 2,
-        }}
-      >
-        <Box sx={{ textAlign: "center", mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 800,
-              background: "linear-gradient(90deg, #1E88E5, #7E57C2)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              mb: 1,
-            }}
-          >
-            Register for Investor
-          </Typography>
-
-          <Typography sx={{ color: "#5F6368" }}>
-            กรุณากรอกข้อมูลเพื่อสมัครสมาชิกในฐานะนักลงทุน
-          </Typography>
-        </Box>
-
-        <Card
-          sx={{
-            maxWidth: 420,
-            mx: "auto",
-            p: 4,
-            borderRadius: 3,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          }}
-        >
-          <TextField fullWidth label="Email" name="email" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="Password" type="password" name="password" margin="normal" onChange={handleChange} />
-          <TextField fullWidth label="ชื่อ-นามสกุล" name="fullName" margin="normal" onChange={handleChange} />
-
-          <Button
-            fullWidth
-            size="large"
-            sx={{
-              mt: 3,
-              py: 1.4,
-              bgcolor: "#1E88E5",
-              color: "white",
-              borderRadius: 2,
-              fontWeight: 600,
-            }}
-            onClick={() => console.log("Investor Register:", form)}
-          >
-            สมัครสมาชิก
-          </Button>
-
-          <Button
-            fullWidth
-            variant="outlined"
-            sx={{
-              mt: 2,
-              borderColor: "#1E88E5",
-              color: "#1E88E5",
-            }}
-            onClick={() => router.push("/auth/register")}
-          >
-            กลับหน้าเลือกประเภท
-          </Button>
-        </Card>
-      </Box>
-    );
-  }
-
-  /* =======================
-     SELECT ROLE
-  ======================= */
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        bgcolor: "#F7F9FC",
+        minHeight: "80vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: "column",
+        backgroundColor: "#f9fafb",
         px: 2,
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: 800 }}>
-        <Typography
-          variant="h5"
-          sx={{ fontWeight: 800, mb: 4, textAlign: "center" }}
-        >
-          สร้างบัญชีของคุณ กับ Fund4U
-        </Typography>
+      <Typography variant="h4" fontWeight={900} mb={5} textAlign="center" sx={gradientText}>
+        Revolutionizing SME Capital with LegalTech
+      </Typography>
 
-        <Stack spacing={3} direction={{ xs: "column", sm: "row" }}>
-          <Box sx={roleCardStyle} onClick={() => router.push("/auth/register?signup=sme")}>
-            <StorefrontIcon sx={{ fontSize: 48, color: "#1E88E5", mb: 1 }} />
-            <Typography fontWeight={700}>Register as SME</Typography>
-            <Typography variant="body2" sx={{ color: "#5F6368", mt: 1 }}>
-              ระดมทุนเพื่อขยายกิจการของคุณ
-            </Typography>
-          </Box>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={4} sx={{ width: "100%", maxWidth: 800 }}>
+        <Box sx={roleCardStyle} onClick={() => router.push("?signup=sme")}>
+          <StorefrontIcon sx={{ fontSize: 48, mb: 2, color: "#1e88e5" }} />
+          <Typography fontWeight={800} color="#1e88e5">
+            Register as SME
+          </Typography>
+        </Box>
 
-          <Box sx={roleCardStyle} onClick={() => router.push("/auth/register?signup=investor")}>
-            <ShowChartIcon sx={{ fontSize: 48, color: "#7E57C2", mb: 1 }} />
-            <Typography fontWeight={700}>Register as Investor</Typography>
-            <Typography variant="body2" sx={{ color: "#5F6368", mt: 1 }}>
-              ค้นหาโอกาสการลงทุนที่มั่นคง
-            </Typography>
-          </Box>
-        </Stack>
-      </Box>
+        <Box sx={roleCardStyle} onClick={() => router.push("?signup=investor")}>
+          <ShowChartIcon sx={{ fontSize: 48, mb: 2, color: "#8e24aa" }} />
+          <Typography fontWeight={800} color="#8e24aa">
+            Register as Investor
+          </Typography>
+        </Box>
+      </Stack>
     </Box>
   );
 }
@@ -264,3 +190,4 @@ export default function RegisterPage() {
     </Suspense>
   );
 }
+
