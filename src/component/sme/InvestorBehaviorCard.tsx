@@ -50,7 +50,7 @@ export default function InvestorBehaviorCard({
       : returningRate >= 0.15
         ? "Trust กลาง"
         : "Trust ต่ำ";
-  const trustColor =
+  const trustColor: "success" | "warning" | "error" =
     returningRate >= 0.3
       ? "success"
       : returningRate >= 0.15
@@ -146,7 +146,7 @@ export default function InvestorBehaviorCard({
 
               <Chip
                 label={trustLabel}
-                color={trustColor as any}
+                color={trustColor}
                 variant="outlined"
                 sx={{ alignSelf: { xs: "flex-start", sm: "center" } }}
               />

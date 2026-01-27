@@ -108,7 +108,7 @@ export default function ViewStatSection() {
             }}
           >
             <Typography variant="body2">
-              โฆษณาโพสต์นี้ เพื่อให้คนเห็นเยอะขึ้น
+              โฆษณาโพสต์นี้ เพื่อให้คนเห็นเยอะขึ้น และเพิ่มโอกาสในการระดมทุน
             </Typography>
 
             <Button
