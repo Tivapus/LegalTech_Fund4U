@@ -70,7 +70,13 @@ function RegisterContent() {
         boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
       }}
     >
-      <TextField fullWidth label="อีเมล" name="email" margin="normal" onChange={handleChange} />
+      <TextField
+        fullWidth
+        label="อีเมล"
+        name="email"
+        margin="normal"
+        onChange={handleChange}
+      />
 
       <TextField
         fullWidth
@@ -79,7 +85,9 @@ function RegisterContent() {
         margin="normal"
         onChange={handleChange}
         InputProps={{
-          startAdornment: <InputAdornment position="start">🇹🇭 +66</InputAdornment>,
+          startAdornment: (
+            <InputAdornment position="start">🇹🇭 +66</InputAdornment>
+          ),
         }}
       />
 
@@ -126,7 +134,11 @@ function RegisterContent() {
         สมัครสมาชิก
       </Button>
 
-      <Button fullWidth sx={{ mt: 2, color: "#555" }} onClick={() => router.push("/auth/register")}>
+      <Button
+        fullWidth
+        sx={{ mt: 2, color: "#555" }}
+        onClick={() => router.push("/auth/register")}
+      >
         กลับหน้าเลือกประเภท
       </Button>
     </Box>
@@ -134,8 +146,13 @@ function RegisterContent() {
 
   if (isSME || isInvestor) {
     return (
-      <Box sx={{ py: 8, px: 2, backgroundColor: "#f9fafb" }}>
-        <Typography variant="h4" fontWeight={800} textAlign="center" sx={gradientText}>
+      <Box sx={{ py: 8, px: 2 }}>
+        <Typography
+          variant="h4"
+          fontWeight={800}
+          textAlign="center"
+          sx={gradientText}
+        >
           {isSME ? "Register as SME" : "Register as Investor"}
         </Typography>
 
@@ -156,19 +173,31 @@ function RegisterContent() {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        backgroundColor: "#f9fafb",
         px: 2,
       }}
     >
-      <Typography variant="h4" fontWeight={900} mb={5} textAlign="center" sx={gradientText}>
+      <Typography
+        variant="h4"
+        fontWeight={900}
+        mb={5}
+        textAlign="center"
+        sx={gradientText}
+      >
         Revolutionizing SME Capital with LegalTech
       </Typography>
 
-      <Stack direction={{ xs: "column", sm: "row" }} spacing={4} sx={{ width: "100%", maxWidth: 800 }}>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={4}
+        sx={{ width: "100%", maxWidth: 800 }}
+      >
         <Box sx={roleCardStyle} onClick={() => router.push("?signup=sme")}>
           <StorefrontIcon sx={{ fontSize: 48, mb: 2, color: "#1e88e5" }} />
           <Typography fontWeight={800} color="#1e88e5">
             Register as SME
+          </Typography>
+          <Typography variant="body2" sx={{ color: "#5F6368", mt: 2 }}>
+            ระดมทุนเพื่อขยายกิจการของคุณ
           </Typography>
         </Box>
 
@@ -176,6 +205,9 @@ function RegisterContent() {
           <ShowChartIcon sx={{ fontSize: 48, mb: 2, color: "#8e24aa" }} />
           <Typography fontWeight={800} color="#8e24aa">
             Register as Investor
+          </Typography>
+          <Typography sx={{ color: "#5F6368", mt: 2 }}>
+            กรุณากรอกข้อมูลเพื่อสมัครสมาชิกในฐานะนักลงทุน
           </Typography>
         </Box>
       </Stack>
@@ -190,4 +222,3 @@ export default function RegisterPage() {
     </Suspense>
   );
 }
-
