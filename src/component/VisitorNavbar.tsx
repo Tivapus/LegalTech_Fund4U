@@ -130,7 +130,7 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
         </Box>
       </Drawer>
 
-      <Container sx={{ py: 4 }}>{children}</Container>
+      <Container maxWidth="xl" sx={{ py: 4 }}>{children}</Container>
 
       <FAQButton />
     </Box>
