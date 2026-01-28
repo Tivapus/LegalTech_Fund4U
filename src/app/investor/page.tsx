@@ -32,8 +32,8 @@ export default function InvestorPage() {
         size={{ xs: 12, md: 4, lg: 3 }}
         sx={{ display: { xs: "none", md: "block" } }}
       >
-        <Card sx={{ p: 2.5, borderRadius: 3 }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1 }}>
+        <Card sx={{ p: 2.5, borderRadius: 4, bgcolor: "rgba(0,0,0,0.01)", border: "1px solid rgba(0,0,0,0.05)" }}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1, color: "text.primary" }}>
             ฟีเจอร์สำหรับคุณ
           </Typography>
 
@@ -48,13 +48,13 @@ export default function InvestorPage() {
               <ListItemIcon>
                 <SwapHorizIcon />
               </ListItemIcon>
-              <ListItemText primary="หุ้นกู้ตลาดรอง" />
+              <ListItemText primary="ซื้อขายตลาดรอง" />
             </ListItemButton>
-            <ListItemButton sx={{ color: "error.main" }}>
-              <ListItemIcon sx={{ color: "error.main" }}>
+            <ListItemButton sx={{ color: "#FFC107", "&:hover": { bgcolor: "rgba(255, 193, 7, 0.08)" } }}>
+              <ListItemIcon sx={{ color: "#FFC107" }}>
                 <StarIcon />
               </ListItemIcon>
-              <ListItemText primary="รายการโปรด" />
+              <ListItemText primary="รายการโปรด" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
             </ListItemButton>
           </List>
 
@@ -95,7 +95,17 @@ export default function InvestorPage() {
             const pct = Math.min(100, (post.raised / post.target) * 100);
             return (
               <Grid size={12} key={post.id}>
-                <Card sx={{ p: 3, borderRadius: 3 }}>
+                <Card 
+                  sx={{ 
+                    p: 3, 
+                    borderRadius: 4,
+                    transition: "all 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: "0 12px 24px rgba(0,0,0,0.1)",
+                    }
+                  }}
+                >
                   <Grid container spacing={3}>
                     <Grid size={{ xs: 12, md: 8 }}>
                       <Box
@@ -132,14 +142,15 @@ export default function InvestorPage() {
 
                       <Box
                         sx={{
-                          bgcolor: "rgba(0,0,0,0.04)",
-                          p: 2,
-                          borderRadius: 2,
+                          bgcolor: "rgba(25, 118, 210, 0.04)",
+                          p: 2.5,
+                          borderRadius: 3,
+                          border: "1px solid rgba(25, 118, 210, 0.08)",
                         }}
                       >
                         <Typography
                           variant="subtitle2"
-                          sx={{ fontWeight: 800, mb: 1 }}
+                          sx={{ fontWeight: 800, mb: 1.5, color: "primary.main" }}
                         >
                           ข้อมูลธุรกิจพื้นฐาน:
                         </Typography>
@@ -149,30 +160,33 @@ export default function InvestorPage() {
                               variant="caption"
                               color="text.secondary"
                               display="block"
+                              sx={{ fontWeight: 600 }}
                             >
                               กำไรสุทธิ:
                             </Typography>
-                            <Typography variant="body2">15%</Typography>
+                            <Typography variant="body2" sx={{ fontWeight: 700 }}>15%</Typography>
                           </Grid>
                           <Grid size={4}>
                             <Typography
                               variant="caption"
                               color="text.secondary"
                               display="block"
+                              sx={{ fontWeight: 600 }}
                             >
                               ระยะเวลาคืนทุน:
                             </Typography>
-                            <Typography variant="body2">18 เดือน</Typography>
+                            <Typography variant="body2" sx={{ fontWeight: 700 }}>18 เดือน</Typography>
                           </Grid>
                           <Grid size={4}>
                             <Typography
                               variant="caption"
                               color="text.secondary"
                               display="block"
+                              sx={{ fontWeight: 600 }}
                             >
                               ความเสี่ยง:
                             </Typography>
-                            <Typography variant="body2">ต่ำ</Typography>
+                            <Typography variant="body2" sx={{ fontWeight: 700, color: "success.main" }}>ต่ำ</Typography>
                           </Grid>
                         </Grid>
                       </Box>
@@ -217,8 +231,32 @@ export default function InvestorPage() {
                           </Typography>
                         </Box>
 
-                        <Button variant="contained" fullWidth>
-                          ดูรายละเอียด & ลงทุน
+                        <Button 
+                          variant="contained" 
+                          fullWidth 
+                          sx={{ 
+                            borderRadius: 2,
+                            py: 1.2,
+                            fontWeight: 700,
+                            textTransform: "none",
+                            boxShadow: "none",
+                            "&:hover": { boxShadow: "0 4px 12px rgba(25, 118, 210, 0.2)" }
+                          }}
+                        >
+                          รายละเอียดสำหรับการลงทุน
+                        </Button>
+                        <Button 
+                          variant="outlined" 
+                          fullWidth 
+                          sx={{ 
+                            mt: 1.5,
+                            borderRadius: 2,
+                            py: 1.2,
+                            fontWeight: 700,
+                            textTransform: "none",
+                          }}
+                        >
+                          งบการเงิน
                         </Button>
                       </Box>
                     </Grid>
