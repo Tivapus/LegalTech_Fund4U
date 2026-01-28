@@ -22,13 +22,13 @@ export type Post = {
   target: number;
   history: MonthlyRaised[];
   investors: Investor[];     
-  tags: string[];           // ✅ เพิ่ม: ประเภทธุรกิจ (filter)
-  location: string;         // ✅ เพิ่ม: ที่ตั้ง
-  businessInfo: {           // ✅ เพิ่ม: ข้อมูลธุรกิจพื้นฐาน
+  tags: string[];
+  location: string;
+  businessInfo: {
     netProfit: string;
     paybackPeriod: string;
     risk: "ต่ำ" | "ปานกลาง" | "สูง";
-    guarantee: number;      // ✅ ย้ายเข้ามาใน businessInfo
+    guarantee: number;
   };
 };
 
@@ -37,7 +37,7 @@ const sum = (xs: MonthlyRaised[]) => xs.reduce((acc, x) => acc + x.amount, 0);
 // helper สร้าง avatar
 const av = (seed: string) => `https://api.dicebear.com/7.x/initials/svg?seed=${seed}`;
 
-export const posts: Post[] = [
+const rawPosts: Omit<Post, "raised">[] = [
   {
     id: 1,
     sme: "ก๋วยเตี๋ยวป้าณี",
@@ -74,7 +74,6 @@ export const posts: Post[] = [
       { id: "inv-009", name: "View K.", avatar: av("VK"), invested: 250, investedAt: "2025-08-20", isReturning: false },
       { id: "inv-010", name: "Fern L.", avatar: av("FL"), invested: 700, investedAt: "2025-08-11", isReturning: false },
     ],
-    raised: 0,
   },
 
   {
@@ -106,7 +105,6 @@ export const posts: Post[] = [
       { id: "inv-102", name: "Nan W.", avatar: av("NW"), invested: 8000, investedAt: "2025-11-05", isReturning: false },
       { id: "inv-103", name: "James P.", avatar: av("JP"), invested: 5000, investedAt: "2026-01-03", isReturning: false },
     ],
-    raised: 0,
   },
 
   {
@@ -122,7 +120,7 @@ export const posts: Post[] = [
     businessInfo: {
       netProfit: "18%",
       paybackPeriod: "12 เดือน",
-      risk: "ปานกลาง",
+      risk: "สูง",
       guarantee: 50,
     },
     history: [
@@ -137,7 +135,6 @@ export const posts: Post[] = [
       { id: "inv-201", name: "Mew M.", avatar: av("MM"), invested: 2000, investedAt: "2026-01-08", isReturning: true },
       { id: "inv-202", name: "Pat C.", avatar: av("PC"), invested: 1500, investedAt: "2025-12-13", isReturning: false },
     ],
-    raised: 0,
   },
 
   {
@@ -166,7 +163,6 @@ export const posts: Post[] = [
     investors: [
       { id: "inv-301", name: "Green L.", avatar: av("GL"), invested: 900, investedAt: "2025-12-01", isReturning: false },
     ],
-    raised: 0,
   },
   {
     id: 5,
@@ -180,7 +176,7 @@ export const posts: Post[] = [
     businessInfo: {
       netProfit: "25%",
       paybackPeriod: "36 เดือน",
-      risk: "สูง",
+      risk: "ปานกลาง",
       guarantee: 40,
     },
     history: [
@@ -195,6 +191,7 @@ export const posts: Post[] = [
       { id: "inv-401", name: "Tech P.", avatar: av("TP"), invested: 20000, investedAt: "2025-12-15", isReturning: true },
       { id: "inv-402", name: "Auto Car", avatar: av("AC"), invested: 50000, investedAt: "2025-11-20", isReturning: false },
     ],
-    raised: 0,
   },
-].map((p) => ({ ...p, raised: sum(p.history) }));
+];
+
+export const posts: Post[] = rawPosts.map((p) => ({ ...p, raised: sum(p.history) }));
