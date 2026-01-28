@@ -10,7 +10,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "var(--font-noto-sans-thai), var(--font-geist-sans), Arial, sans-serif",
+    fontFamily: "var(--font-noto-sans-thai-looped), var(--font-geist-sans), Arial, sans-serif",
   },
 });
 

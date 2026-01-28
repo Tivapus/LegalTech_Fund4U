@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans_Thai } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_Thai_Looped } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
@@ -19,8 +19,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-const notoSansThai = Noto_Sans_Thai({
-  variable: "--font-noto-sans-thai",
+const notoSansThaiLooped = Noto_Sans_Thai_Looped({
+  variable: "--font-noto-sans-thai-looped",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["thai", "latin"],
 });
 
@@ -36,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSansThai.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${notoSansThaiLooped.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <NotificationProvider>
