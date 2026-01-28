@@ -45,7 +45,7 @@ export const posts: Post[] = [
     description:
       "ป้าอยากให้คนเมืองได้ลอง ต้องการเงินทุนเพื่อขยายรสชาติก๋วยเตี๋ยวสูตรดั้งเดิมให้ชาวสามย่าน",
     logo: "/image.png",
-    target: 120000,
+    target: 500000,
     tags: ["food", "service"],
     location: "นนทบุรี",
     businessInfo: {
@@ -59,13 +59,13 @@ export const posts: Post[] = [
       { month: "2025-09", amount: 6100 },
       { month: "2025-10", amount: 3500 },
       { month: "2025-11", amount: 4800 },
-      { month: "2025-12", amount: 2100 },
-      { month: "2026-01", amount: 9200 },
+      { month: "2025-12", amount: 9100 },
+      { month: "2026-01", amount: 15000 },
     ],
     investors: [
       { id: "inv-001", name: "Anan P.", avatar: av("AP"), invested: 5000, investedAt: "2026-01-11", isReturning: true },
-      { id: "inv-002", name: "Mali S.", avatar: av("MS"), invested: 4200, investedAt: "2026-01-10", isReturning: false },
-      { id: "inv-003", name: "Krit T.", avatar: av("KT"), invested: 2100, investedAt: "2025-12-21", isReturning: false },
+      { id: "inv-002", name: "Mali S.", avatar: av("MS"), invested: 10000, investedAt: "2026-01-10", isReturning: false },
+      { id: "inv-003", name: "Krit T.", avatar: av("KT"), invested: 9100, investedAt: "2025-12-21", isReturning: false },
       { id: "inv-004", name: "Nicha R.", avatar: av("NR"), invested: 4800, investedAt: "2025-11-09", isReturning: true },
       { id: "inv-005", name: "Ploy V.", avatar: av("PV"), invested: 3500, investedAt: "2025-10-03", isReturning: false },
       { id: "inv-006", name: "Thanakorn J.", avatar: av("TJ"), invested: 2200, investedAt: "2025-09-18", isReturning: false },
@@ -89,8 +89,8 @@ export const posts: Post[] = [
     location: "ระยอง",
     businessInfo: {
       netProfit: "22%",
-      paybackPeriod: "24 เดือน",
-      risk: "ปานกลาง",
+      paybackPeriod: "6 เดือน",
+      risk: "ต่ำ",
       guarantee: 90,
     },
     history: [
@@ -174,7 +174,7 @@ export const posts: Post[] = [
     title: "ยกระดับอู่ซ่อมรถสู่มาตรฐานสากล",
     description: "ส่งลูกน้องไปฝึกงานที่เยอรมนี ยกระดับคุณภาพการซ่อมรถยุโรป เพื่อรองรับลูกค้าระดับพรีเมียม",
     logo: "https://api.dicebear.com/7.x/initials/svg?seed=CN&backgroundColor=ff6b6b",
-    target: 200000,
+    target: 1000000,
     tags: ["service"],
     location: "กรุงเทพฯ",
     businessInfo: {
