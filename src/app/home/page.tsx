@@ -87,24 +87,26 @@ export default function HomePage() {
           <Typography
             variant="h1"
             sx={{
-              fontWeight: 900,
+              fontWeight: 700,
               fontSize: { xs: "3rem", md: "4.5rem" },
               mb: 3,
               background: `linear-gradient(45deg, ${COLORS.PURPLE} 30%, ${COLORS.GOLD} 90%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               pb: 1,
+              lineHeight: 1.4,
               // animation
               animation: `${fadeUp} 800ms ease-out both`,
             }}
           >
-            Revolutionizing SME <br /> Capital with LegalTech
+            ทุนถึงมือ ธุรกิจถึงฝัน<br />ระดมทุนเพื่อ SME ไทย
           </Typography>
 
           <Typography
             variant="h5"
             color="text.secondary"
             sx={{
+              fontFamily: "inherit",
               mb: 6,
               fontWeight: 400,
               maxWidth: "700px",
@@ -113,9 +115,7 @@ export default function HomePage() {
               animationDelay: "120ms",
             }}
           >
-            Fund4U connect transparency with opportunity. Whether you're a
-            business looking to scale or an investor seeking growth, we provide
-            the secure infrastructure for success.
+            Fund4U เชื่อมโยงความโปร่งใสสู่โอกาสการเติบโต ไม่ว่าคุณจะเป็นธุรกิจที่ต้องการขยายตัว หรือนักลงทุนที่มองหาความสำเร็จ เราพร้อมมอบโครงสร้างพื้นฐานที่ปลอดภัยเพื่อคุณ
           </Typography>
 
           <Stack
@@ -132,6 +132,7 @@ export default function HomePage() {
               size="large"
               onClick={() => router.push("/auth/login")}
               sx={{
+                fontFamily: "inherit",
                 px: 4,
                 py: 2,
                 borderRadius: 2,
@@ -139,13 +140,14 @@ export default function HomePage() {
                 fontSize: "1.1rem",
                 boxShadow: `0 10px 20px ${alpha(COLORS.PURPLE, 0.3)}`,
                 transition: "transform 180ms ease, box-shadow 180ms ease",
+                textTransform: "none",
                 "&:hover": {
                   transform: "translateY(-2px)",
                   boxShadow: `0 14px 30px ${alpha(COLORS.PURPLE, 0.35)}`,
                 },
               }}
             >
-              Get Started Now
+              เริ่มต้นใช้งานเลย
             </Button>
           </Stack>
         </Container>
@@ -223,27 +225,28 @@ export default function HomePage() {
               >
                 <StorefrontIcon sx={{ fontSize: 60 }} />
               </Box>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
-                Register as SME
+              <Typography variant="h4" sx={{ fontFamily: "inherit", fontWeight: 800, mb: 2 }}>
+                สมัครสมาชิก SME
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                Ready to raise capital and grow your business? Access
-                institutional and retail investors through our secure platform.
+              <Typography variant="body1" color="text.secondary" sx={{ fontFamily: "inherit", mb: 4 }}>
+                พร้อมระดมทุนเพื่อขยายธุรกิจของคุณแล้วหรือยัง? เข้าถึงกลุ่มนักลงทุนสถาบันและรายย่อยผ่านแพลตฟอร์มที่ปลอดภัยของเรา
               </Typography>
               <Button
                 variant="outlined"
                 fullWidth
                 size="large"
                 sx={{
+                  fontFamily: "inherit",
                   mt: "auto",
                   py: 1.5,
                   borderRadius: 2,
                   fontWeight: 700,
                   transition: "transform 160ms ease",
+                  textTransform: "none",
                   "&:hover": { transform: "translateY(-1px)" },
                 }}
               >
-                Register as SME
+                สมัครสมาชิก SME
               </Button>
             </Card>
           </Grid>
@@ -287,12 +290,11 @@ export default function HomePage() {
               >
                 <TrendingUpIcon sx={{ fontSize: 60 }} />
               </Box>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
-                Register as Investor
+              <Typography variant="h4" sx={{ fontFamily: "inherit", fontWeight: 800, mb: 2 }}>
+                สมัครสมาชิกนักลงทุน
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                Discover vetted investment opportunities in rising businesses.
-                Diversify your portfolio with high-yield SME bonds.
+              <Typography variant="body1" color="text.secondary" sx={{ fontFamily: "inherit", mb: 4 }}>
+                ค้นพบโอกาสการลงทุนในธุรกิจดาวรุ่งที่ผ่านการตรวจสอบแล้ว กระจายพอร์ตการลงทุนของคุณด้วยการลงทุนใน SME ไทย ผลตอบแทนสูง
               </Typography>
               <Button
                 variant="outlined"
@@ -300,15 +302,17 @@ export default function HomePage() {
                 fullWidth
                 size="large"
                 sx={{
+                  fontFamily: "inherit",
                   mt: "auto",
                   py: 1.5,
                   borderRadius: 2,
                   fontWeight: 700,
                   transition: "transform 160ms ease",
+                  textTransform: "none",
                   "&:hover": { transform: "translateY(-1px)" },
                 }}
               >
-                Register as Investor
+                สมัครสมาชิกนักลงทุน
               </Button>
             </Card>
           </Grid>
@@ -322,12 +326,13 @@ export default function HomePage() {
             variant="h3"
             textAlign="center"
             sx={{
+              fontFamily: "inherit",
               fontWeight: 800,
               mb: 8,
               animation: `${fadeUp} 800ms ease-out both`,
             }}
           >
-            Built for Trust and Transparency
+            สร้างขึ้นเพื่อความเชื่อมั่นและความโปร่งใส
           </Typography>
           <Grid container spacing={6}>
             <Grid size={{ xs: 12, md: 4 }}>
@@ -339,13 +344,11 @@ export default function HomePage() {
                     animation: `${floaty} 6s ease-in-out infinite`,
                   }}
                 />
-                <Typography variant="h6" sx={{ fontWeight: 800 }}>
-                  Legally Compliant
+                <Typography variant="h6" sx={{ fontFamily: "inherit", fontWeight: 800 }}>
+                  ถูกต้องตามกฎหมาย
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Our platform is engineered with LegalTech at its core,
-                  ensuring all regulatory requirements are met for every
-                  transaction.
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "inherit" }}>
+                  แพลตฟอร์มของเราถูกพัฒนาโดยมีเทคโนโลยีทางด้านกฎหมายเป็นหัวใจสำคัญ เพื่อให้มั่นใจว่าทุกธุรกรรมเป็นไปตามข้อกำหนดของภาครัฐ
                 </Typography>
               </Stack>
             </Grid>
@@ -358,12 +361,11 @@ export default function HomePage() {
                     animation: `${floaty} 6.3s ease-in-out infinite`,
                   }}
                 />
-                <Typography variant="h6" sx={{ fontWeight: 800 }}>
-                  Vetted Opportunities
+                <Typography variant="h6" sx={{ fontFamily: "inherit", fontWeight: 800 }}>
+                  คัดกรองทุกโอกาส
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Every SME undergoes a multi-stage verification process to
-                  ensure credibility and financial stability before listing.
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "inherit" }}>
+                  SME ทุกรายต้องผ่านกระบวนการตรวจสอบหลายขั้นตอน เพื่อยืนยันความน่าเชื่อถือและความมั่นคงทางการเงินก่อนเริ่มระดมทุน
                 </Typography>
               </Stack>
             </Grid>
@@ -376,12 +378,11 @@ export default function HomePage() {
                     animation: `${floaty} 6.6s ease-in-out infinite`,
                   }}
                 />
-                <Typography variant="h6" sx={{ fontWeight: 800 }}>
-                  Bank-Grade Security
+                <Typography variant="h6" sx={{ fontFamily: "inherit", fontWeight: 800 }}>
+                  ความปลอดภัยระดับธนาคาร
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Your data and funds are protected by industry-leading
-                  encryption and security protocols.
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "inherit" }}>
+                  ข้อมูลและเงินทุนของคุณได้รับการคุ้มครองด้วยการเข้ารหัสและความปลอดภัยตามมาตรฐานสากล
                 </Typography>
               </Stack>
             </Grid>
@@ -394,12 +395,12 @@ export default function HomePage() {
         <Grid container spacing={2} justifyContent="space-around">
           {[
             {
-              label: "Active Investors",
+              label: "นักลงทุนที่ใช้งานอยู่",
               value: `${investors.toLocaleString()}+`,
             },
-            { label: "SMEs Funded", value: `${smes.toLocaleString()}+` },
+            { label: "SME ที่ระดมทุนสำเร็จ", value: `${smes.toLocaleString()}+` },
             {
-              label: "Capital Raised",
+              label: "เงินทุนหมุนเวียน",
               value: `฿${capital.toLocaleString()}M+`,
             },
           ].map((stat, i) => (
@@ -415,6 +416,7 @@ export default function HomePage() {
               <Typography
                 variant="h2"
                 sx={{
+                  fontFamily: "inherit",
                   fontWeight: 900,
                   color: "primary.main",
                   fontSize: { xs: "2.5rem", md: "3.5rem" },
@@ -425,7 +427,7 @@ export default function HomePage() {
               <Typography
                 variant="subtitle1"
                 color="text.secondary"
-                sx={{ fontWeight: 500 }}
+                sx={{ fontFamily: "inherit", fontWeight: 500 }}
               >
                 {stat.label}
               </Typography>
