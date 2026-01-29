@@ -39,7 +39,7 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
   };
 
   const navItems = [
-    { label: "หน้าแรก", path: "/home", icon: <HomeIcon /> },
+    // { label: "หน้าแรก", path: "/home", icon: <HomeIcon /> },
     { label: "My Campaign", path: "/sme/campaign", icon: <RocketLaunchIcon /> },
   ].filter((item) => {
     if (pathname === "/sme/verification" && item.label === "My Campaign") {
@@ -85,7 +85,7 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                   px: 1,
                   borderRadius: 1,
                   color: "primary.main",
-                  ml: 0.5
+                  ml: 0.5,
                 }}
               >
                 SME
@@ -199,7 +199,7 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 px: 1,
                 borderRadius: 1,
                 color: "primary.main",
-                ml: 0.5
+                ml: 0.5,
               }}
             >
               SME
