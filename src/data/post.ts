@@ -26,6 +26,7 @@ export type Post = {
   location: string;
   businessInfo: {
     netProfit: string;
+    contractPeriod: string
     paybackPeriod: string;
     risk: "ต่ำ" | "ปานกลาง" | "สูง";
     guarantee: number;
@@ -50,6 +51,7 @@ const rawPosts: Omit<Post, "raised">[] = [
     location: "นนทบุรี",
     businessInfo: {
       netProfit: "15%",
+      contractPeriod: "10ปี",
       paybackPeriod: "18 เดือน",
       risk: "ต่ำ",
       guarantee: 80,
@@ -88,6 +90,7 @@ const rawPosts: Omit<Post, "raised">[] = [
     location: "ระยอง",
     businessInfo: {
       netProfit: "22%",
+      contractPeriod: "5ปี",
       paybackPeriod: "6 เดือน",
       risk: "ต่ำ",
       guarantee: 90,
@@ -119,6 +122,7 @@ const rawPosts: Omit<Post, "raised">[] = [
     location: "เชียงใหม่",
     businessInfo: {
       netProfit: "18%",
+      contractPeriod: "7ปี",
       paybackPeriod: "12 เดือน",
       risk: "สูง",
       guarantee: 50,
@@ -148,6 +152,7 @@ const rawPosts: Omit<Post, "raised">[] = [
     location: "นครปฐม",
     businessInfo: {
       netProfit: "10%",
+      contractPeriod: "15ปี",
       paybackPeriod: "6 เดือน",
       risk: "ต่ำ",
       guarantee: 100,
@@ -175,6 +180,7 @@ const rawPosts: Omit<Post, "raised">[] = [
     location: "กรุงเทพฯ",
     businessInfo: {
       netProfit: "25%",
+      contractPeriod: "5ปี",
       paybackPeriod: "36 เดือน",
       risk: "ปานกลาง",
       guarantee: 40,
