@@ -12,11 +12,11 @@ export default function FAQButton() {
         right: 24,
         bottom: 24,
         zIndex: 1300,
-        width: { xs: 56, sm: "auto" },
-        height: 56,
-        padding: { xs: 0, sm: "0 20px" },
-        minWidth: { xs: 56, sm: 64 },
-        borderRadius: { xs: "50%", sm: "28px" },
+        width: "auto",
+        height: 48,
+        padding: "0 20px",
+        minWidth: 64,
+        borderRadius: "24px",
         bgcolor: "black",
         color: "white",
         textTransform: "none",
@@ -28,12 +28,11 @@ export default function FAQButton() {
         },
       }}
     >
-      <HelpOutlineIcon sx={{ mr: { xs: 0, sm: 1 } }} />
+      <HelpOutlineIcon sx={{ mr: 1 }} />
       <Box
         component="span"
         sx={{
-          display: { xs: "none", sm: "block" },
-          fontSize: "0.95rem",
+          fontSize: "0.85rem",
         }}
       >
         คำถามที่พบบ่อย (FAQ)
