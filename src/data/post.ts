@@ -21,7 +21,15 @@ export type Post = {
   raised: number;
   target: number;
   history: MonthlyRaised[];
-  investors: Investor[];     // ✅ เพิ่ม
+  investors: Investor[];     
+  tags: string[];
+  location: string;
+  businessInfo: {
+    netProfit: string;
+    paybackPeriod: string;
+    risk: "ต่ำ" | "ปานกลาง" | "สูง";
+    guarantee: number;
+  };
 };
 
 const sum = (xs: MonthlyRaised[]) => xs.reduce((acc, x) => acc + x.amount, 0);
@@ -29,27 +37,35 @@ const sum = (xs: MonthlyRaised[]) => xs.reduce((acc, x) => acc + x.amount, 0);
 // helper สร้าง avatar
 const av = (seed: string) => `https://api.dicebear.com/7.x/initials/svg?seed=${seed}`;
 
-export const posts: Post[] = [
+const rawPosts: Omit<Post, "raised">[] = [
   {
     id: 1,
     sme: "ก๋วยเตี๋ยวป้าณี",
-    title: "เปิดสาขาสองที่เชียงใหม่",
+    title: "เปิดสาขาสองที่สามย่าน",
     description:
-      "ป้าใคร่แอ่วเจียงใหม่ขนาดเจ้า ต้องการเงินทุนเพื่อขยายรสชาติก๋วยเตี๋ยวสูตรดั้งเดิมให้ชาวเชียงใหม่ได้ลิ้มลอง",
+      "ป้าอยากให้คนเมืองได้ลอง ต้องการเงินทุนเพื่อขยายรสชาติก๋วยเตี๋ยวสูตรดั้งเดิมให้ไปถึงชาวสามย่าน",
     logo: "/image.png",
-    target: 120000,
+    target: 500000,
+    tags: ["food", "service"],
+    location: "นนทบุรี",
+    businessInfo: {
+      netProfit: "15%",
+      paybackPeriod: "18 เดือน",
+      risk: "ต่ำ",
+      guarantee: 80,
+    },
     history: [
       { month: "2025-08", amount: 1200 },
       { month: "2025-09", amount: 6100 },
       { month: "2025-10", amount: 3500 },
       { month: "2025-11", amount: 4800 },
-      { month: "2025-12", amount: 2100 },
-      { month: "2026-01", amount: 9200 },
+      { month: "2025-12", amount: 9100 },
+      { month: "2026-01", amount: 15000 },
     ],
     investors: [
       { id: "inv-001", name: "Anan P.", avatar: av("AP"), invested: 5000, investedAt: "2026-01-11", isReturning: true },
-      { id: "inv-002", name: "Mali S.", avatar: av("MS"), invested: 4200, investedAt: "2026-01-10", isReturning: false },
-      { id: "inv-003", name: "Krit T.", avatar: av("KT"), invested: 2100, investedAt: "2025-12-21", isReturning: false },
+      { id: "inv-002", name: "Mali S.", avatar: av("MS"), invested: 10000, investedAt: "2026-01-10", isReturning: false },
+      { id: "inv-003", name: "Krit T.", avatar: av("KT"), invested: 9100, investedAt: "2025-12-21", isReturning: false },
       { id: "inv-004", name: "Nicha R.", avatar: av("NR"), invested: 4800, investedAt: "2025-11-09", isReturning: true },
       { id: "inv-005", name: "Ploy V.", avatar: av("PV"), invested: 3500, investedAt: "2025-10-03", isReturning: false },
       { id: "inv-006", name: "Thanakorn J.", avatar: av("TJ"), invested: 2200, investedAt: "2025-09-18", isReturning: false },
@@ -58,10 +74,8 @@ export const posts: Post[] = [
       { id: "inv-009", name: "View K.", avatar: av("VK"), invested: 250, investedAt: "2025-08-20", isReturning: false },
       { id: "inv-010", name: "Fern L.", avatar: av("FL"), invested: 700, investedAt: "2025-08-11", isReturning: false },
     ],
-    raised: 0,
   },
 
-  // ... post 2-4 ใส่ investors แบบเดียวกันได้ (สั้น ๆ ก็พอสำหรับ prototype)
   {
     id: 2,
     sme: "สวนทุเรียนลุงสม",
@@ -70,6 +84,14 @@ export const posts: Post[] = [
       "ช่วยลุงประหยัดแรงและเพิ่มผลผลิตทุเรียนหมอนทองเกรดพรีเมียมด้วยเทคโนโลยี Smart Farming",
     logo: "https://api.dicebear.com/7.x/initials/svg?seed=LS&backgroundColor=4ecdc4",
     target: 80000,
+    tags: ["agri"],
+    location: "ระยอง",
+    businessInfo: {
+      netProfit: "22%",
+      paybackPeriod: "6 เดือน",
+      risk: "ต่ำ",
+      guarantee: 90,
+    },
     history: [
       { month: "2025-08", amount: 6000 },
       { month: "2025-09", amount: 10500 },
@@ -83,7 +105,6 @@ export const posts: Post[] = [
       { id: "inv-102", name: "Nan W.", avatar: av("NW"), invested: 8000, investedAt: "2025-11-05", isReturning: false },
       { id: "inv-103", name: "James P.", avatar: av("JP"), invested: 5000, investedAt: "2026-01-03", isReturning: false },
     ],
-    raised: 0,
   },
 
   {
@@ -94,6 +115,14 @@ export const posts: Post[] = [
       "น้องแมวต้องการบ้านที่กว้างขึ้น และเราต้องการเสิร์ฟกาแฟรสชาติเยี่ยมให้คนรักแมวทุกท่าน",
     logo: "https://api.dicebear.com/7.x/initials/svg?seed=MM&backgroundColor=feca57",
     target: 50000,
+    tags: ["food", "service"],
+    location: "เชียงใหม่",
+    businessInfo: {
+      netProfit: "18%",
+      paybackPeriod: "12 เดือน",
+      risk: "สูง",
+      guarantee: 50,
+    },
     history: [
       { month: "2025-08", amount: 1200 },
       { month: "2025-09", amount: 1600 },
@@ -106,7 +135,6 @@ export const posts: Post[] = [
       { id: "inv-201", name: "Mew M.", avatar: av("MM"), invested: 2000, investedAt: "2026-01-08", isReturning: true },
       { id: "inv-202", name: "Pat C.", avatar: av("PC"), invested: 1500, investedAt: "2025-12-13", isReturning: false },
     ],
-    raised: 0,
   },
 
   {
@@ -116,6 +144,14 @@ export const posts: Post[] = [
     description: "ปลูกผักสลัดออร์แกนิก ปลอดสารพิษ เพื่อสุขภาพที่ดีของคนในชุมชน",
     logo: "https://api.dicebear.com/7.x/initials/svg?seed=HF&backgroundColor=1dd1a1",
     target: 30000,
+    tags: ["agri"],
+    location: "นครปฐม",
+    businessInfo: {
+      netProfit: "10%",
+      paybackPeriod: "6 เดือน",
+      risk: "ต่ำ",
+      guarantee: 100,
+    },
     history: [
       { month: "2025-08", amount: 300 },
       { month: "2025-09", amount: 450 },
@@ -127,6 +163,35 @@ export const posts: Post[] = [
     investors: [
       { id: "inv-301", name: "Green L.", avatar: av("GL"), invested: 900, investedAt: "2025-12-01", isReturning: false },
     ],
-    raised: 0,
   },
-].map((p) => ({ ...p, raised: sum(p.history) }));
+  {
+    id: 5,
+    sme: "อู่ช่างนัทที",
+    title: "ยกระดับอู่ซ่อมรถสู่มาตรฐานสากล",
+    description: "ส่งลูกน้องไปฝึกงานที่เยอรมนี ยกระดับคุณภาพการซ่อมรถยุโรป เพื่อรองรับลูกค้าระดับพรีเมียม",
+    logo: "https://api.dicebear.com/7.x/initials/svg?seed=CN&backgroundColor=ff6b6b",
+    target: 1000000,
+    tags: ["service"],
+    location: "กรุงเทพฯ",
+    businessInfo: {
+      netProfit: "25%",
+      paybackPeriod: "36 เดือน",
+      risk: "ปานกลาง",
+      guarantee: 40,
+    },
+    history: [
+      { month: "2025-08", amount: 10000 },
+      { month: "2025-09", amount: 15000 },
+      { month: "2025-10", amount: 20000 },
+      { month: "2025-11", amount: 25000 },
+      { month: "2025-12", amount: 30000 },
+      { month: "2026-01", amount: 5000 },
+    ],
+    investors: [
+      { id: "inv-401", name: "Tech P.", avatar: av("TP"), invested: 20000, investedAt: "2025-12-15", isReturning: true },
+      { id: "inv-402", name: "Auto Car", avatar: av("AC"), invested: 50000, investedAt: "2025-11-20", isReturning: false },
+    ],
+  },
+];
+
+export const posts: Post[] = rawPosts.map((p) => ({ ...p, raised: sum(p.history) }));

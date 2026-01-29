@@ -25,6 +25,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import { COLORS } from "@/constants/colors";
 
 export default function SmeNavbar({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -37,6 +39,7 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
   };
 
   const navItems = [
+    { label: "หน้าแรก", path: "/home", icon: <HomeIcon /> },
     { label: "My Campaign", path: "/sme/campaign", icon: <RocketLaunchIcon /> },
   ].filter((item) => {
     if (pathname === "/sme/verification" && item.label === "My Campaign") {
@@ -69,11 +72,11 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 mr: 4,
                 display: "flex",
                 alignItems: "center",
-                gap: 1,
-                color: "primary.main",
               }}
             >
-              Fund4U{" "}
+              <span style={{ color: COLORS.PURPLE }}>Fund</span>
+              <span style={{ color: COLORS.GOLD }}>4</span>
+              <span style={{ color: COLORS.PURPLE }}>U</span>
               <Typography
                 variant="caption"
                 sx={{
@@ -81,6 +84,8 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                   bgcolor: alpha(theme.palette.primary.main, 0.1),
                   px: 1,
                   borderRadius: 1,
+                  color: "primary.main",
+                  ml: 0.5
                 }}
               >
                 SME
@@ -177,11 +182,15 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
             sx={{
               my: 2,
               fontWeight: 900,
-              color: "primary.main",
               textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            Fund4U{" "}
+            <span style={{ color: COLORS.PURPLE }}>Fund</span>
+            <span style={{ color: COLORS.GOLD }}>4</span>
+            <span style={{ color: COLORS.PURPLE }}>U</span>
             <Typography
               variant="caption"
               sx={{
@@ -189,6 +198,8 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 bgcolor: alpha(theme.palette.primary.main, 0.1),
                 px: 1,
                 borderRadius: 1,
+                color: "primary.main",
+                ml: 0.5
               }}
             >
               SME

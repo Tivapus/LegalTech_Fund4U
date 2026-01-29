@@ -19,6 +19,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import GavelIcon from "@mui/icons-material/Gavel";
 import SecurityIcon from "@mui/icons-material/Security";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { COLORS } from "@/constants/colors";
 
 // ===== animations (no extra lib) =====
 const fadeUp = keyframes`
@@ -89,11 +90,10 @@ export default function HomePage() {
               fontWeight: 900,
               fontSize: { xs: "3rem", md: "4.5rem" },
               mb: 3,
-              background: "linear-gradient(45deg, #2196F3 30%, #9C27B0 90%)",
+              background: `linear-gradient(45deg, ${COLORS.PURPLE} 30%, ${COLORS.GOLD} 90%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              lineHeight: 1.1,
-
+              pb: 1,
               // animation
               animation: `${fadeUp} 800ms ease-out both`,
             }}
@@ -137,11 +137,11 @@ export default function HomePage() {
                 borderRadius: 2,
                 fontWeight: 700,
                 fontSize: "1.1rem",
-                boxShadow: "0 10px 20px rgba(33, 150, 243, 0.3)",
+                boxShadow: `0 10px 20px ${alpha(COLORS.PURPLE, 0.3)}`,
                 transition: "transform 180ms ease, box-shadow 180ms ease",
                 "&:hover": {
                   transform: "translateY(-2px)",
-                  boxShadow: "0 14px 30px rgba(33, 150, 243, 0.35)",
+                  boxShadow: `0 14px 30px ${alpha(COLORS.PURPLE, 0.35)}`,
                 },
               }}
             >

@@ -1,7 +1,8 @@
 "use client";
 
-import { Fab, Box } from "@mui/material";
+import { Fab, Box, alpha } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { COLORS } from "@/constants/colors";
 
 export default function FAQButton() {
   return (
@@ -12,28 +13,27 @@ export default function FAQButton() {
         right: 24,
         bottom: 24,
         zIndex: 1300,
-        width: { xs: 56, sm: "auto" },
-        height: 56,
-        padding: { xs: 0, sm: "0 20px" },
-        minWidth: { xs: 56, sm: 64 },
-        borderRadius: { xs: "50%", sm: "28px" },
-        bgcolor: "black",
+        width: "auto",
+        height: 48,
+        padding: "0 20px",
+        minWidth: 64,
+        borderRadius: "24px",
+        bgcolor: COLORS.PURPLE,
         color: "white",
         textTransform: "none",
         fontWeight: 800,
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
         "&:hover": {
-          bgcolor: "#333",
+          bgcolor: alpha(COLORS.PURPLE, 0.85),
           boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
         },
       }}
     >
-      <HelpOutlineIcon sx={{ mr: { xs: 0, sm: 1 } }} />
+      <HelpOutlineIcon sx={{ mr: 1 }} />
       <Box
         component="span"
         sx={{
-          display: { xs: "none", sm: "block" },
-          fontSize: "0.95rem",
+          fontSize: "0.85rem",
         }}
       >
         คำถามที่พบบ่อย (FAQ)

@@ -14,17 +14,29 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  ListItemIcon,
+  alpha,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import LogoutIcon from "@mui/icons-material/Logout";
+import HomeIcon from "@mui/icons-material/Home";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import FAQButton from "./FAQButton";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { COLORS } from "@/constants/colors";
 
 type VisitorNavbarProps = { children: ReactNode };
 
 export default function VisitorNavbar({ children }: VisitorNavbarProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isInvestorPage = pathname.startsWith("/investor");
 
   function toHome() {
     router.push("/home");
@@ -43,11 +55,15 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
     setMobileOpen(!mobileOpen);
   };
 
-  const menuItems = [
-    { label: "หน้าแรก", onClick: toHome },
-    { label: "เข้าสู่ระบบ", onClick: toLogin },
-    { label: "สมัครสมาชิก", onClick: toRegister },
-  ];
+  const navItems = isInvestorPage 
+    ? [
+        { label: "หน้าแรก", onClick: toHome, icon: <HomeIcon /> },
+      ]
+    : [
+        { label: "หน้าแรก", onClick: toHome, icon: <HomeIcon /> },
+        { label: "เข้าสู่ระบบ", onClick: toLogin, icon: <LoginIcon /> },
+        { label: "สมัครสมาชิก", onClick: toRegister, icon: <PersonAddIcon /> },
+      ];
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#f6f7fb" }}>
@@ -56,49 +72,85 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
         elevation={1}
         sx={{ bgcolor: "white", color: "text.primary" }}
       >
-        <Toolbar>
-          <Typography
-            variant="h6"
-            onClick={() => router.push("/home")}
-            sx={{
-              fontWeight: 900,
-              cursor: "pointer",
-              mr: 4,
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "primary.main",
-            }}
-          >
-            Fund4U{" "}
-          </Typography>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h6"
+              onClick={() => router.push(isInvestorPage ? "/investor" : "/home")}
+              sx={{
+                fontWeight: 900,
+                cursor: "pointer",
+                mr: 4,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ color: COLORS.PURPLE }}>Fund</span>
+              <span style={{ color: COLORS.GOLD }}>4</span>
+              <span style={{ color: COLORS.PURPLE }}>U</span>
+              {isInvestorPage && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    fontWeight: 700,
+                    bgcolor: alpha(theme.palette.primary.main, 0.1),
+                    px: 1,
+                    borderRadius: 1,
+                    ml: 0.5,
+                    color: "primary.main"
+                  }}
+                >
+                  Investor
+                </Typography>
+              )}
+            </Typography>
 
-          <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ flexGrow: 1 }} />
 
-          {/* Desktop Menu */}
-          <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 1 }}>
-            <Button onClick={toHome} color="inherit">
-              หน้าแรก
-            </Button>
-            <Button onClick={toLogin} color="inherit">
-              เข้าสู่ระบบ
-            </Button>
-            <Button onClick={toRegister} color="inherit">
-              สมัครสมาชิก
-            </Button>
-          </Box>
+            {/* Desktop Menu */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+              {isInvestorPage ? (
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  onClick={() => router.push("/home")}
+                  startIcon={<LogoutIcon />}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    borderColor: alpha(theme.palette.divider, 0.2),
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Button onClick={toHome} color="inherit">
+                    หน้าแรก
+                  </Button>
+                  <Button onClick={toLogin} color="inherit">
+                    เข้าสู่ระบบ
+                  </Button>
+                  <Button onClick={toRegister} color="inherit">
+                    สมัครสมาชิก
+                  </Button>
+                </>
+              )}
+            </Box>
 
-          {/* Mobile Menu Icon */}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
+            {/* Mobile Menu Icon */}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ display: { md: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
       </AppBar>
 
       <Drawer
@@ -110,30 +162,93 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 250 },
         }}
       >
-        <Box sx={{ textAlign: "center", pt: 2 }}>
-          <Typography variant="h6" sx={{ my: 2, fontWeight: 800 }}>
-            Fund4U
+        <Box sx={{ p: 2 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              my: 2,
+              fontWeight: 900,
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span style={{ color: COLORS.PURPLE }}>Fund</span>
+            <span style={{ color: COLORS.GOLD }}>4</span>
+            <span style={{ color: COLORS.PURPLE }}>U</span>
+            {isInvestorPage && (
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 700,
+                  bgcolor: alpha(theme.palette.primary.main, 0.1),
+                  px: 1,
+                  borderRadius: 1,
+                  color: "primary.main"
+                }}
+              >
+                Investor
+              </Typography>
+            )}
           </Typography>
           <List>
-            {menuItems.map((item) => (
+            {navItems.map((item) => (
               <ListItem key={item.label} disablePadding>
                 <ListItemButton
                   onClick={item.onClick}
-                  sx={{ textAlign: "center" }}
+                  sx={{
+                    borderRadius: 2,
+                    mb: 0.5,
+                    color: "text.secondary",
+                  }}
                 >
-                  <ListItemText primary={item.label} />
+                  <ListItemIcon sx={{ minWidth: 40 }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.label}
+                    primaryTypographyProps={{
+                      fontWeight: 500,
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
+
+            {isInvestorPage && (
+              <ListItem
+                disablePadding
+                sx={{
+                  mt: 2,
+                  pt: 2,
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                }}
+              >
+                <ListItemButton
+                  onClick={() => router.push("/home")}
+                  sx={{ borderRadius: 2, color: "error.main" }}
+                >
+                  <ListItemIcon sx={{ minWidth: 40, color: "error.main" }}>
+                    <LogoutIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Logout"
+                    primaryTypographyProps={{ fontWeight: 700 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            )}
           </List>
         </Box>
       </Drawer>
 
-      <Container sx={{ py: 4 }}>{children}</Container>
+      <Container maxWidth="xl" sx={{ py: 4 }}>{children}</Container>
 
       <FAQButton />
     </Box>

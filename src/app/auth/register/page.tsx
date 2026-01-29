@@ -15,9 +15,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
+import { COLORS } from "@/constants/colors";
 
 const gradientText = {
-  background: "linear-gradient(90deg, #1e88e5 0%, #8e24aa 100%)",
+  background: `linear-gradient(90deg, ${COLORS.PURPLE} 0%, ${COLORS.GOLD} 100%)`,
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
 };
@@ -127,7 +128,7 @@ function RegisterContent() {
           fontWeight: 700,
           color: "white",
           borderRadius: 2,
-          background: "linear-gradient(90deg, #1e88e5 0%, #8e24aa 100%)",
+          background: `linear-gradient(90deg, ${COLORS.PURPLE} 0%, ${COLORS.GOLD} 100%)`,
         }}
         onClick={() => router.push("/auth/login")}
       >
@@ -192,8 +193,8 @@ function RegisterContent() {
         sx={{ width: "100%", maxWidth: 800 }}
       >
         <Box sx={roleCardStyle} onClick={() => router.push("?signup=sme")}>
-          <StorefrontIcon sx={{ fontSize: 48, mb: 2, color: "#1e88e5" }} />
-          <Typography fontWeight={800} color="#1e88e5">
+          <StorefrontIcon sx={{ fontSize: 48, mb: 2, color: COLORS.PURPLE }} />
+          <Typography fontWeight={800} color={COLORS.PURPLE}>
             Register as SME
           </Typography>
           <Typography variant="body2" sx={{ color: "#5F6368", mt: 2 }}>
@@ -202,8 +203,8 @@ function RegisterContent() {
         </Box>
 
         <Box sx={roleCardStyle} onClick={() => router.push("?signup=investor")}>
-          <ShowChartIcon sx={{ fontSize: 48, mb: 2, color: "#8e24aa" }} />
-          <Typography fontWeight={800} color="#8e24aa">
+          <ShowChartIcon sx={{ fontSize: 48, mb: 2, color: COLORS.GOLD }} />
+          <Typography fontWeight={800} color={COLORS.GOLD}>
             Register as Investor
           </Typography>
           <Typography sx={{ color: "#5F6368", mt: 2 }}>

@@ -1,9 +1,10 @@
 "use client";
 
-import { Box, Card, Typography, Button, TextField, Stack } from "@mui/material";
+import { Box, Card, Typography, Button, TextField, Stack, alpha } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { users } from "@/data/user";
+import { COLORS } from "@/constants/colors";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -84,7 +85,13 @@ export default function LoginPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+            sx={{ 
+              "& .MuiOutlinedInput-root": { 
+                borderRadius: 2,
+                "&.Mui-focused fieldset": { borderColor: COLORS.PURPLE }
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: COLORS.PURPLE }
+            }}
           />
           <TextField
             label="รหัสผ่าน (Password)"
@@ -94,7 +101,13 @@ export default function LoginPage() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+            sx={{ 
+              "& .MuiOutlinedInput-root": { 
+                borderRadius: 2,
+                "&.Mui-focused fieldset": { borderColor: COLORS.PURPLE }
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: COLORS.PURPLE }
+            }}
           />
           <Box
             sx={{
@@ -106,7 +119,6 @@ export default function LoginPage() {
           >
             <Button
               variant="contained"
-              color="inherit"
               fullWidth
               size="large"
               sx={{
@@ -115,10 +127,11 @@ export default function LoginPage() {
                 fontWeight: 800,
                 textTransform: "none",
                 borderRadius: 2,
-                bgcolor: "black",
+                background: `linear-gradient(90deg, ${COLORS.PURPLE} 0%, ${COLORS.GOLD} 100%)`,
                 color: "white",
+                boxShadow: `0 4px 12px ${alpha(COLORS.PURPLE, 0.3)}`,
                 "&:hover": {
-                  bgcolor: "#333",
+                  boxShadow: `0 6px 16px ${alpha(COLORS.PURPLE, 0.4)}`,
                 },
               }}
               onClick={onClickLogin}
@@ -131,7 +144,7 @@ export default function LoginPage() {
               <Typography
                 variant="caption"
                 color="text.secondary"
-                sx={{ mb: 1, display: "block", textAlign: "center" }}
+                sx={{ mb: 1, display: "block", textAlign: "center", fontWeight: 600 }}
               >
                 Quick Login (For Testing)
               </Typography>
@@ -144,7 +157,17 @@ export default function LoginPage() {
                     setEmail("sme@fund4u.com");
                     setPassword("sme");
                   }}
-                  sx={{ borderRadius: 2, textTransform: "none" }}
+                  sx={{ 
+                    borderRadius: 2, 
+                    textTransform: "none", 
+                    fontWeight: 700,
+                    borderColor: COLORS.PURPLE, 
+                    color: COLORS.PURPLE,
+                    "&:hover": { 
+                      borderColor: alpha(COLORS.PURPLE, 0.8), 
+                      bgcolor: alpha(COLORS.PURPLE, 0.04) 
+                    }
+                  }}
                 >
                   SME
                 </Button>
@@ -156,25 +179,48 @@ export default function LoginPage() {
                     setEmail("investor@fund4u.com");
                     setPassword("investor");
                   }}
-                  sx={{ borderRadius: 2, textTransform: "none" }}
+                  sx={{ 
+                    borderRadius: 2, 
+                    textTransform: "none", 
+                    fontWeight: 700,
+                    borderColor: COLORS.GOLD, 
+                    color: COLORS.GOLD,
+                    "&:hover": { 
+                      borderColor: alpha(COLORS.GOLD, 0.8), 
+                      bgcolor: alpha(COLORS.GOLD, 0.04) 
+                    }
+                  }}
                 >
                   Investor
                 </Button>
               </Stack>
             </Box>
 
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ fontSize: { xs: "0.9rem", sm: "1rem" }, mt: 2 }}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: 2,
+                gap: 0.5
+              }}
             >
-              ยังไม่มีบัญชี?{" "}
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
+              >
+                ยังไม่มีบัญชี?
+              </Typography>
               <Button
                 onClick={() => router.push("/auth/register")}
                 sx={{
+                  p: 0,
+                  minWidth: "auto",
                   textTransform: "none",
                   fontWeight: 800,
-                  color: "black",
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  color: COLORS.PURPLE,
                   "&:hover": {
                     background: "transparent",
                     textDecoration: "underline",
@@ -183,7 +229,7 @@ export default function LoginPage() {
               >
                 สมัครสมาชิก
               </Button>
-            </Typography>
+            </Box>
           </Box>
         </Box>
       </Card>
