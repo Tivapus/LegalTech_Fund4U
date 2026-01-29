@@ -195,17 +195,30 @@ export default function LoginPage() {
               </Stack>
             </Box>
 
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ fontSize: { xs: "0.9rem", sm: "1rem" }, mt: 2 }}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mt: 2,
+                gap: 0.5
+              }}
             >
-              ยังไม่มีบัญชี?{" "}
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
+              >
+                ยังไม่มีบัญชี?
+              </Typography>
               <Button
                 onClick={() => router.push("/auth/register")}
                 sx={{
+                  p: 0,
+                  minWidth: "auto",
                   textTransform: "none",
                   fontWeight: 800,
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
                   color: "#a44ccd",
                   "&:hover": {
                     background: "transparent",
@@ -215,7 +228,7 @@ export default function LoginPage() {
               >
                 สมัครสมาชิก
               </Button>
-            </Typography>
+            </Box>
           </Box>
         </Box>
       </Card>
