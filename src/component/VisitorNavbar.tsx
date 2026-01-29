@@ -58,16 +58,19 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
       >
         <Toolbar>
           <Typography
-            onClick={toHome}
             variant="h6"
+            onClick={() => router.push("/home")}
             sx={{
-              textDecoration: "none",
-              color: "inherit",
-              fontWeight: 800,
+              fontWeight: 900,
               cursor: "pointer",
+              mr: 4,
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              color: "primary.main",
             }}
           >
-            Fund4U
+            Fund4U{" "}
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />

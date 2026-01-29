@@ -62,7 +62,7 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
             {/* Logo */}
             <Typography
               variant="h6"
-              onClick={() => router.push("/sme")}
+              onClick={() => router.push("/sme/campaign")}
               sx={{
                 fontWeight: 900,
                 cursor: "pointer",
