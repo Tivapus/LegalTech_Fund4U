@@ -31,19 +31,21 @@ import { COLORS } from "@/constants/colors";
 import { alpha } from "@mui/material";
 
 export default function InvestorPage() {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>(["food", "agri", "service"]);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([
+    "food",
+    "agri",
+    "service",
+  ]);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.name;
     setSelectedFilters((prev) =>
-      prev.includes(value)
-        ? prev.filter((f) => f !== value)
-        : [...prev, value]
+      prev.includes(value) ? prev.filter((f) => f !== value) : [...prev, value],
     );
   };
 
   const filteredPosts = posts.filter((post) =>
-    post.tags.some((tag) => selectedFilters.includes(tag))
+    post.tags.some((tag) => selectedFilters.includes(tag)),
   );
 
   return (
@@ -53,29 +55,68 @@ export default function InvestorPage() {
         size={{ xs: 12, md: 4, lg: 3 }}
         sx={{ display: { xs: "none", md: "block" } }}
       >
-        <Card sx={{ p: 2.5, borderRadius: 4, bgcolor: "rgba(0,0,0,0.01)", border: "1px solid rgba(0,0,0,0.05)" }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1, color: "text.primary" }}>
+        <Card
+          sx={{
+            p: 2.5,
+            borderRadius: 4,
+            bgcolor: "rgba(0,0,0,0.01)",
+            border: "1px solid rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="subtitle1"
+            sx={{ fontWeight: 800, mb: 1, color: "text.primary" }}
+          >
             ฟีเจอร์สำหรับคุณ
           </Typography>
 
           <List dense sx={{ p: 0 }}>
-            <ListItemButton sx={{ color: COLORS.BLUE, borderRadius: 2, mb: 0.5, "&:hover": { bgcolor: alpha(COLORS.BLUE, 0.08) } }}>
+            <ListItemButton
+              sx={{
+                color: COLORS.BLUE,
+                borderRadius: 2,
+                mb: 0.5,
+                "&:hover": { bgcolor: alpha(COLORS.BLUE, 0.08) },
+              }}
+            >
               <ListItemIcon sx={{ color: COLORS.BLUE }}>
                 <SchoolIcon />
               </ListItemIcon>
-              <ListItemText primary="สอนการลงทุนอย่างถูกต้อง" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
+              <ListItemText
+                primary="สอนการลงทุนอย่างถูกต้อง"
+                sx={{ "& .MuiTypography-root": { fontWeight: 600 } }}
+              />
             </ListItemButton>
-            <ListItemButton sx={{ color: COLORS.PURPLE, borderRadius: 2, mb: 0.5, "&:hover": { bgcolor: alpha(COLORS.PURPLE, 0.08) } }}>
+            <ListItemButton
+              sx={{
+                color: COLORS.PURPLE,
+                borderRadius: 2,
+                mb: 0.5,
+                "&:hover": { bgcolor: alpha(COLORS.PURPLE, 0.08) },
+              }}
+            >
               <ListItemIcon sx={{ color: COLORS.PURPLE }}>
                 <SwapHorizIcon />
               </ListItemIcon>
-              <ListItemText primary="ซื้อขายตลาดรอง" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
+              <ListItemText
+                primary="ซื้อขายตลาดรอง"
+                sx={{ "& .MuiTypography-root": { fontWeight: 600 } }}
+              />
             </ListItemButton>
-            <ListItemButton sx={{ color: COLORS.GOLD, borderRadius: 2, "&:hover": { bgcolor: alpha(COLORS.GOLD, 0.08) } }}>
+            <ListItemButton
+              sx={{
+                color: COLORS.GOLD,
+                borderRadius: 2,
+                "&:hover": { bgcolor: alpha(COLORS.GOLD, 0.08) },
+              }}
+            >
               <ListItemIcon sx={{ color: COLORS.GOLD }}>
                 <StarIcon />
               </ListItemIcon>
-              <ListItemText primary="รายการโปรด" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
+              <ListItemText
+                primary="รายการโปรด"
+                sx={{ "& .MuiTypography-root": { fontWeight: 600 } }}
+              />
             </ListItemButton>
           </List>
 
@@ -140,15 +181,15 @@ export default function InvestorPage() {
             const pct = Math.min(100, (post.raised / post.target) * 100);
             return (
               <Grid size={12} key={post.id}>
-                <Card 
-                  sx={{ 
-                    p: 3, 
+                <Card
+                  sx={{
+                    p: 3,
                     borderRadius: 4,
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
                       transform: "translateY(-4px)",
                       boxShadow: "0 12px 24px rgba(0,0,0,0.1)",
-                    }
+                    },
                   }}
                 >
                   <Grid container spacing={3}>
@@ -167,12 +208,24 @@ export default function InvestorPage() {
                           }}
                         />
                         <Box>
-                          <Typography variant="h6" sx={{ fontWeight: 800, lineHeight: 1.2 }}>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontWeight: 800, lineHeight: 1.2 }}
+                          >
                             {post.sme}
                           </Typography>
-                          <Box sx={{ display: "flex", alignItems: "center", mt: 0.5, color: "text.secondary" }}>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              mt: 0.5,
+                              color: "text.secondary",
+                            }}
+                          >
                             <LocationOnIcon sx={{ fontSize: 16, mr: 0.5 }} />
-                            <Typography variant="caption">{post.location}</Typography>
+                            <Typography variant="caption">
+                              {post.location}
+                            </Typography>
                           </Box>
                         </Box>
                       </Box>
@@ -199,51 +252,93 @@ export default function InvestorPage() {
                           border: `1px solid ${alpha(COLORS.PURPLE, 0.08)}`,
                         }}
                       >
-                        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1.5 }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            mb: 1.5,
+                          }}
+                        >
                           <Typography
                             variant="subtitle2"
                             sx={{ fontWeight: 800, color: "primary.main" }}
                           >
                             ข้อมูลธุรกิจพื้นฐาน:
                           </Typography>
-                          <Chip 
-                            icon={<VerifiedUserIcon sx={{ fontSize: "16px !important", color: `${COLORS.PURPLE} !important` }} />} 
-                            label={`การันตีเงินประกัน ${post.businessInfo.guarantee}%`} 
-                            size="small" 
-                            sx={{ 
-                              fontWeight: 700, 
+                          <Chip
+                            icon={
+                              <VerifiedUserIcon
+                                sx={{
+                                  fontSize: "16px !important",
+                                  color: `${COLORS.PURPLE} !important`,
+                                }}
+                              />
+                            }
+                            label={`การันตีเงินประกัน ${post.businessInfo.guarantee}%`}
+                            size="small"
+                            sx={{
+                              fontWeight: 700,
                               height: 26,
                               bgcolor: alpha(COLORS.PURPLE, 0.12),
                               color: COLORS.PURPLE,
                               border: `1px solid ${alpha(COLORS.PURPLE, 0.3)}`,
-                              "& .MuiChip-label": { px: 1.5 }
+                              "& .MuiChip-label": { px: 1.5 },
                             }}
                           />
                         </Box>
                         <Grid container spacing={2}>
-                          <Grid size={4}>
+                          <Grid size={3}>
                             <Typography
                               variant="caption"
                               color="text.secondary"
                               display="block"
                               sx={{ fontWeight: 600 }}
                             >
-                              กำไรสุทธิ:
+                              ส่วนแบ่งกำไร:
                             </Typography>
-                            <Typography variant="body2" sx={{ fontWeight: 700 }}>{post.businessInfo.netProfit}</Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{ fontWeight: 700 }}
+                            >
+                              {post.businessInfo.netProfit}
+                            </Typography>
                           </Grid>
-                          <Grid size={4}>
+                          <Grid size={3}>
                             <Typography
                               variant="caption"
                               color="text.secondary"
                               display="block"
                               sx={{ fontWeight: 600 }}
                             >
-                              ระยะเวลาคืนทุน:
+                              ระยะเวลาสัญญา:
                             </Typography>
-                            <Typography variant="body2" sx={{ fontWeight: 700 }}>{post.businessInfo.paybackPeriod}</Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{ fontWeight: 700 }}
+                            >
+                              {post.businessInfo.contractPeriod}
+                            </Typography>
                           </Grid>
-                          <Grid size={4}>
+                          <Grid size={3}>
+                            <Typography
+                              variant="caption"
+                              color="text.secondary"
+                              display="block"
+                              sx={{ fontWeight: 600 }}
+                            >
+                              ระยะเวลาคืนทุน
+                              <br />
+                              (คาดการณ์):
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{ fontWeight: 700 }}
+                            >
+                              {post.businessInfo.paybackPeriod}
+                            </Typography>
+                          </Grid>
+                          <Grid size={3}>
                             <Typography
                               variant="caption"
                               color="text.secondary"
@@ -252,11 +347,16 @@ export default function InvestorPage() {
                             >
                               ความเสี่ยง:
                             </Typography>
-                            <Typography 
-                              variant="body2" 
-                              sx={{ 
-                                fontWeight: 700, 
-                                color: post.businessInfo.risk === "ต่ำ" ? "success.main" : post.businessInfo.risk === "ปานกลาง" ? "warning.main" : "error.main" 
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontWeight: 700,
+                                color:
+                                  post.businessInfo.risk === "ต่ำ"
+                                    ? "success.main"
+                                    : post.businessInfo.risk === "ปานกลาง"
+                                      ? "warning.main"
+                                      : "error.main",
                               }}
                             >
                               {post.businessInfo.risk}
@@ -274,7 +374,7 @@ export default function InvestorPage() {
                           height: "100%",
                           display: "flex",
                           flexDirection: "column",
-                          justifyContent: "space-between"
+                          justifyContent: "space-between",
                         }}
                       >
                         <Box sx={{ mb: 2 }}>
@@ -310,25 +410,27 @@ export default function InvestorPage() {
                         </Box>
 
                         <Box>
-                          <Button 
-                            variant="contained" 
-                            fullWidth 
-                            sx={{ 
+                          <Button
+                            variant="contained"
+                            fullWidth
+                            sx={{
                               borderRadius: 2,
                               py: 1.2,
-                                                                                      fontWeight: 700,
-                                                                                      textTransform: "none",
-                                                                                      boxShadow: "none",
-                                                                                      bgcolor: COLORS.GOLD,
-                                                                                      "&:hover": { boxShadow: `0 4px 12px ${alpha(COLORS.GOLD, 0.3)}` }
-                                                                                    }}
-                                                                                  >
-                                                                                    รายละเอียดสำหรับการลงทุน
-                                                                                  </Button>
-                                                                                    <Button 
-                            variant="outlined" 
-                            fullWidth 
-                            sx={{ 
+                              fontWeight: 700,
+                              textTransform: "none",
+                              boxShadow: "none",
+                              bgcolor: COLORS.GOLD,
+                              "&:hover": {
+                                boxShadow: `0 4px 12px ${alpha(COLORS.GOLD, 0.3)}`,
+                              },
+                            }}
+                          >
+                            รายละเอียดสำหรับการลงทุน
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            fullWidth
+                            sx={{
                               mt: 1.5,
                               borderRadius: 2,
                               py: 1.2,
