@@ -84,7 +84,13 @@ export default function LoginPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+            sx={{ 
+              "& .MuiOutlinedInput-root": { 
+                borderRadius: 2,
+                "&.Mui-focused fieldset": { borderColor: "#a44ccd" }
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#a44ccd" }
+            }}
           />
           <TextField
             label="รหัสผ่าน (Password)"
@@ -94,7 +100,13 @@ export default function LoginPage() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={{ "& .MuiOutlinedInput-root": { borderRadius: 2 } }}
+            sx={{ 
+              "& .MuiOutlinedInput-root": { 
+                borderRadius: 2,
+                "&.Mui-focused fieldset": { borderColor: "#a44ccd" }
+              },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#a44ccd" }
+            }}
           />
           <Box
             sx={{
@@ -106,7 +118,6 @@ export default function LoginPage() {
           >
             <Button
               variant="contained"
-              color="inherit"
               fullWidth
               size="large"
               sx={{
@@ -115,10 +126,11 @@ export default function LoginPage() {
                 fontWeight: 800,
                 textTransform: "none",
                 borderRadius: 2,
-                bgcolor: "black",
+                background: "linear-gradient(90deg, #a44ccd 0%, #fcac3f 100%)",
                 color: "white",
+                boxShadow: "0 4px 12px rgba(164, 76, 205, 0.3)",
                 "&:hover": {
-                  bgcolor: "#333",
+                  boxShadow: "0 6px 16px rgba(164, 76, 205, 0.4)",
                 },
               }}
               onClick={onClickLogin}
@@ -131,7 +143,7 @@ export default function LoginPage() {
               <Typography
                 variant="caption"
                 color="text.secondary"
-                sx={{ mb: 1, display: "block", textAlign: "center" }}
+                sx={{ mb: 1, display: "block", textAlign: "center", fontWeight: 600 }}
               >
                 Quick Login (For Testing)
               </Typography>
@@ -144,7 +156,17 @@ export default function LoginPage() {
                     setEmail("sme@fund4u.com");
                     setPassword("sme");
                   }}
-                  sx={{ borderRadius: 2, textTransform: "none" }}
+                  sx={{ 
+                    borderRadius: 2, 
+                    textTransform: "none", 
+                    fontWeight: 700,
+                    borderColor: "#a44ccd", 
+                    color: "#a44ccd",
+                    "&:hover": { 
+                      borderColor: "#8e3eb3", 
+                      bgcolor: "rgba(164, 76, 205, 0.04)" 
+                    }
+                  }}
                 >
                   SME
                 </Button>
@@ -156,7 +178,17 @@ export default function LoginPage() {
                     setEmail("investor@fund4u.com");
                     setPassword("investor");
                   }}
-                  sx={{ borderRadius: 2, textTransform: "none" }}
+                  sx={{ 
+                    borderRadius: 2, 
+                    textTransform: "none", 
+                    fontWeight: 700,
+                    borderColor: "#fcac3f", 
+                    color: "#fcac3f",
+                    "&:hover": { 
+                      borderColor: "#e59b35", 
+                      bgcolor: "rgba(252, 172, 63, 0.04)" 
+                    }
+                  }}
                 >
                   Investor
                 </Button>
@@ -174,7 +206,7 @@ export default function LoginPage() {
                 sx={{
                   textTransform: "none",
                   fontWeight: 800,
-                  color: "black",
+                  color: "#a44ccd",
                   "&:hover": {
                     background: "transparent",
                     textDecoration: "underline",

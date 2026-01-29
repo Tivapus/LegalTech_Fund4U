@@ -71,11 +71,11 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 mr: 4,
                 display: "flex",
                 alignItems: "center",
-                gap: 1,
-                color: "primary.main",
               }}
             >
-              Fund4U{" "}
+              <span style={{ color: "#a44ccd" }}>Fund</span>
+              <span style={{ color: "#fcac3f" }}>4</span>
+              <span style={{ color: "#a44ccd" }}>U</span>
               <Typography
                 variant="caption"
                 sx={{
@@ -83,6 +83,8 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                   bgcolor: alpha(theme.palette.primary.main, 0.1),
                   px: 1,
                   borderRadius: 1,
+                  color: "primary.main",
+                  ml: 0.5
                 }}
               >
                 SME
@@ -179,11 +181,15 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
             sx={{
               my: 2,
               fontWeight: 900,
-              color: "primary.main",
               textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            Fund4U{" "}
+            <span style={{ color: "#a44ccd" }}>Fund</span>
+            <span style={{ color: "#fcac3f" }}>4</span>
+            <span style={{ color: "#a44ccd" }}>U</span>
             <Typography
               variant="caption"
               sx={{
@@ -191,6 +197,8 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 bgcolor: alpha(theme.palette.primary.main, 0.1),
                 px: 1,
                 borderRadius: 1,
+                color: "primary.main",
+                ml: 0.5
               }}
             >
               SME

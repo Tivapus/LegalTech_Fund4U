@@ -69,8 +69,8 @@ export default function InvestorPage() {
               </ListItemIcon>
               <ListItemText primary="ซื้อขายตลาดรอง" />
             </ListItemButton>
-            <ListItemButton sx={{ color: "#FFC107", "&:hover": { bgcolor: "rgba(255, 193, 7, 0.08)" } }}>
-              <ListItemIcon sx={{ color: "#FFC107" }}>
+            <ListItemButton sx={{ color: "#fcac3f", "&:hover": { bgcolor: "rgba(252, 172, 63, 0.08)" } }}>
+              <ListItemIcon sx={{ color: "#fcac3f" }}>
                 <StarIcon />
               </ListItemIcon>
               <ListItemText primary="รายการโปรด" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
@@ -191,10 +191,10 @@ export default function InvestorPage() {
 
                       <Box
                         sx={{
-                          bgcolor: "rgba(25, 118, 210, 0.04)",
+                          bgcolor: "rgba(164, 76, 205, 0.04)",
                           p: 2.5,
                           borderRadius: 3,
-                          border: "1px solid rgba(25, 118, 210, 0.08)",
+                          border: "1px solid rgba(164, 76, 205, 0.08)",
                         }}
                       >
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1.5 }}>
@@ -205,15 +205,15 @@ export default function InvestorPage() {
                             ข้อมูลธุรกิจพื้นฐาน:
                           </Typography>
                           <Chip 
-                            icon={<VerifiedUserIcon sx={{ fontSize: "16px !important", color: "#1565C0 !important" }} />} 
+                            icon={<VerifiedUserIcon sx={{ fontSize: "16px !important", color: "#a44ccd !important" }} />} 
                             label={`การันตีเงินประกัน ${post.businessInfo.guarantee}%`} 
                             size="small" 
                             sx={{ 
                               fontWeight: 700, 
                               height: 26,
-                              bgcolor: "rgba(33, 150, 243, 0.12)",
-                              color: "#1565C0",
-                              border: "1px solid rgba(33, 150, 243, 0.3)",
+                              bgcolor: "rgba(164, 76, 205, 0.12)",
+                              color: "#a44ccd",
+                              border: "1px solid rgba(164, 76, 205, 0.3)",
                               "& .MuiChip-label": { px: 1.5 }
                             }}
                           />
@@ -314,14 +314,15 @@ export default function InvestorPage() {
                             sx={{ 
                               borderRadius: 2,
                               py: 1.2,
-                              fontWeight: 700,
-                              textTransform: "none",
-                              boxShadow: "none",
-                              "&:hover": { boxShadow: "0 4px 12px rgba(25, 118, 210, 0.2)" }
-                            }}
-                          >
-                            รายละเอียดสำหรับการลงทุน
-                          </Button>
+                                                          fontWeight: 700,
+                                                          textTransform: "none",
+                                                          boxShadow: "none",
+                                                          "&:hover": { boxShadow: "0 4px 12px rgba(164, 76, 205, 0.2)" }
+                                                        }}
+                                                      >
+                                                        รายละเอียดสำหรับการลงทุน
+                                                      </Button>
+                              
                           <Button 
                             variant="outlined" 
                             fullWidth 

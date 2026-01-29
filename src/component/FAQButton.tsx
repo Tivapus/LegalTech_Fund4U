@@ -17,13 +17,13 @@ export default function FAQButton() {
         padding: "0 20px",
         minWidth: 64,
         borderRadius: "24px",
-        bgcolor: "black",
+        bgcolor: "#a44ccd",
         color: "white",
         textTransform: "none",
         fontWeight: 800,
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
         "&:hover": {
-          bgcolor: "#333",
+          bgcolor: "#8e3eb3",
           boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
         },
       }}

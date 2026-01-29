@@ -4,6 +4,12 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    primary: {
+      main: "#a44ccd", // Lakers Purple
+    },
+    secondary: {
+      main: "#fcac3f", // Lakers Gold
+    },
     text: {
       primary: "#000000",
       secondary: "#333333",
