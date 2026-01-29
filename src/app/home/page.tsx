@@ -93,8 +93,7 @@ export default function HomePage() {
               background: `linear-gradient(45deg, ${COLORS.PURPLE} 30%, ${COLORS.GOLD} 90%)`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              lineHeight: 1.1,
-
+              pb: 1,
               // animation
               animation: `${fadeUp} 800ms ease-out both`,
             }}
