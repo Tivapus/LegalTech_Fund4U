@@ -1,7 +1,8 @@
 "use client";
 
-import { Fab, Box } from "@mui/material";
+import { Fab, Box, alpha } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { COLORS } from "@/constants/colors";
 
 export default function FAQButton() {
   return (
@@ -17,13 +18,13 @@ export default function FAQButton() {
         padding: "0 20px",
         minWidth: 64,
         borderRadius: "24px",
-        bgcolor: "#a44ccd",
+        bgcolor: COLORS.PURPLE,
         color: "white",
         textTransform: "none",
         fontWeight: 800,
         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
         "&:hover": {
-          bgcolor: "#8e3eb3",
+          bgcolor: alpha(COLORS.PURPLE, 0.85),
           boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
         },
       }}

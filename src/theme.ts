@@ -1,17 +1,18 @@
 "use client";
 
 import { createTheme } from "@mui/material/styles";
+import { COLORS } from "@/constants/colors";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#a44ccd", // Lakers Purple
+      main: COLORS.PURPLE,
     },
     secondary: {
-      main: "#fcac3f", // Lakers Gold
+      main: COLORS.GOLD,
     },
     text: {
-      primary: "#000000",
+      primary: COLORS.BLACK,
       secondary: "#333333",
     },
   },

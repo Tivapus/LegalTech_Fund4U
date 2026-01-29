@@ -26,6 +26,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
+import { COLORS } from "@/constants/colors";
 
 export default function SmeNavbar({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -73,9 +74,9 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
                 alignItems: "center",
               }}
             >
-              <span style={{ color: "#a44ccd" }}>Fund</span>
-              <span style={{ color: "#fcac3f" }}>4</span>
-              <span style={{ color: "#a44ccd" }}>U</span>
+              <span style={{ color: COLORS.PURPLE }}>Fund</span>
+              <span style={{ color: COLORS.GOLD }}>4</span>
+              <span style={{ color: COLORS.PURPLE }}>U</span>
               <Typography
                 variant="caption"
                 sx={{
@@ -187,9 +188,9 @@ export default function SmeNavbar({ children }: { children: React.ReactNode }) {
               justifyContent: "center",
             }}
           >
-            <span style={{ color: "#a44ccd" }}>Fund</span>
-            <span style={{ color: "#fcac3f" }}>4</span>
-            <span style={{ color: "#a44ccd" }}>U</span>
+            <span style={{ color: COLORS.PURPLE }}>Fund</span>
+            <span style={{ color: COLORS.GOLD }}>4</span>
+            <span style={{ color: COLORS.PURPLE }}>U</span>
             <Typography
               variant="caption"
               sx={{

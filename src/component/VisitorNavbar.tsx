@@ -26,6 +26,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import FAQButton from "./FAQButton";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { COLORS } from "@/constants/colors";
 
 type VisitorNavbarProps = { children: ReactNode };
 
@@ -84,9 +85,9 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
                 alignItems: "center",
               }}
             >
-              <span style={{ color: "#a44ccd" }}>Fund</span>
-              <span style={{ color: "#fcac3f" }}>4</span>
-              <span style={{ color: "#a44ccd" }}>U</span>
+              <span style={{ color: COLORS.PURPLE }}>Fund</span>
+              <span style={{ color: COLORS.GOLD }}>4</span>
+              <span style={{ color: COLORS.PURPLE }}>U</span>
               {isInvestorPage && (
                 <Typography
                   variant="caption"
@@ -177,9 +178,9 @@ export default function VisitorNavbar({ children }: VisitorNavbarProps) {
               justifyContent: "center",
             }}
           >
-            <span style={{ color: "#a44ccd" }}>Fund</span>
-            <span style={{ color: "#fcac3f" }}>4</span>
-            <span style={{ color: "#a44ccd" }}>U</span>
+            <span style={{ color: COLORS.PURPLE }}>Fund</span>
+            <span style={{ color: COLORS.GOLD }}>4</span>
+            <span style={{ color: COLORS.PURPLE }}>U</span>
             {isInvestorPage && (
               <Typography
                 variant="caption"

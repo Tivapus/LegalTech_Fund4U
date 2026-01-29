@@ -1,9 +1,10 @@
 "use client";
 
-import { Box, Card, Typography, Button, TextField, Stack } from "@mui/material";
+import { Box, Card, Typography, Button, TextField, Stack, alpha } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { users } from "@/data/user";
+import { COLORS } from "@/constants/colors";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -87,9 +88,9 @@ export default function LoginPage() {
             sx={{ 
               "& .MuiOutlinedInput-root": { 
                 borderRadius: 2,
-                "&.Mui-focused fieldset": { borderColor: "#a44ccd" }
+                "&.Mui-focused fieldset": { borderColor: COLORS.PURPLE }
               },
-              "& .MuiInputLabel-root.Mui-focused": { color: "#a44ccd" }
+              "& .MuiInputLabel-root.Mui-focused": { color: COLORS.PURPLE }
             }}
           />
           <TextField
@@ -103,9 +104,9 @@ export default function LoginPage() {
             sx={{ 
               "& .MuiOutlinedInput-root": { 
                 borderRadius: 2,
-                "&.Mui-focused fieldset": { borderColor: "#a44ccd" }
+                "&.Mui-focused fieldset": { borderColor: COLORS.PURPLE }
               },
-              "& .MuiInputLabel-root.Mui-focused": { color: "#a44ccd" }
+              "& .MuiInputLabel-root.Mui-focused": { color: COLORS.PURPLE }
             }}
           />
           <Box
@@ -126,11 +127,11 @@ export default function LoginPage() {
                 fontWeight: 800,
                 textTransform: "none",
                 borderRadius: 2,
-                background: "linear-gradient(90deg, #a44ccd 0%, #fcac3f 100%)",
+                background: `linear-gradient(90deg, ${COLORS.PURPLE} 0%, ${COLORS.GOLD} 100%)`,
                 color: "white",
-                boxShadow: "0 4px 12px rgba(164, 76, 205, 0.3)",
+                boxShadow: `0 4px 12px ${alpha(COLORS.PURPLE, 0.3)}`,
                 "&:hover": {
-                  boxShadow: "0 6px 16px rgba(164, 76, 205, 0.4)",
+                  boxShadow: `0 6px 16px ${alpha(COLORS.PURPLE, 0.4)}`,
                 },
               }}
               onClick={onClickLogin}
@@ -160,11 +161,11 @@ export default function LoginPage() {
                     borderRadius: 2, 
                     textTransform: "none", 
                     fontWeight: 700,
-                    borderColor: "#a44ccd", 
-                    color: "#a44ccd",
+                    borderColor: COLORS.PURPLE, 
+                    color: COLORS.PURPLE,
                     "&:hover": { 
-                      borderColor: "#8e3eb3", 
-                      bgcolor: "rgba(164, 76, 205, 0.04)" 
+                      borderColor: alpha(COLORS.PURPLE, 0.8), 
+                      bgcolor: alpha(COLORS.PURPLE, 0.04) 
                     }
                   }}
                 >
@@ -182,11 +183,11 @@ export default function LoginPage() {
                     borderRadius: 2, 
                     textTransform: "none", 
                     fontWeight: 700,
-                    borderColor: "#fcac3f", 
-                    color: "#fcac3f",
+                    borderColor: COLORS.GOLD, 
+                    color: COLORS.GOLD,
                     "&:hover": { 
-                      borderColor: "#e59b35", 
-                      bgcolor: "rgba(252, 172, 63, 0.04)" 
+                      borderColor: alpha(COLORS.GOLD, 0.8), 
+                      bgcolor: alpha(COLORS.GOLD, 0.04) 
                     }
                   }}
                 >
@@ -219,7 +220,7 @@ export default function LoginPage() {
                   textTransform: "none",
                   fontWeight: 800,
                   fontSize: { xs: "0.9rem", sm: "1rem" },
-                  color: "#a44ccd",
+                  color: COLORS.PURPLE,
                   "&:hover": {
                     background: "transparent",
                     textDecoration: "underline",

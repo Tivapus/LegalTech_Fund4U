@@ -27,6 +27,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { posts } from "@/data/post";
+import { COLORS } from "@/constants/colors";
+import { alpha } from "@mui/material";
 
 export default function InvestorPage() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>(["food", "agri", "service"]);
@@ -57,20 +59,20 @@ export default function InvestorPage() {
           </Typography>
 
           <List dense sx={{ p: 0 }}>
-            <ListItemButton>
-              <ListItemIcon>
+            <ListItemButton sx={{ color: COLORS.BLUE, borderRadius: 2, mb: 0.5, "&:hover": { bgcolor: alpha(COLORS.BLUE, 0.08) } }}>
+              <ListItemIcon sx={{ color: COLORS.BLUE }}>
                 <SchoolIcon />
               </ListItemIcon>
-              <ListItemText primary="สอนการลงทุนอย่างถูกต้อง" />
+              <ListItemText primary="สอนการลงทุนอย่างถูกต้อง" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
             </ListItemButton>
-            <ListItemButton>
-              <ListItemIcon>
+            <ListItemButton sx={{ color: COLORS.PURPLE, borderRadius: 2, mb: 0.5, "&:hover": { bgcolor: alpha(COLORS.PURPLE, 0.08) } }}>
+              <ListItemIcon sx={{ color: COLORS.PURPLE }}>
                 <SwapHorizIcon />
               </ListItemIcon>
-              <ListItemText primary="ซื้อขายตลาดรอง" />
+              <ListItemText primary="ซื้อขายตลาดรอง" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
             </ListItemButton>
-            <ListItemButton sx={{ color: "#fcac3f", "&:hover": { bgcolor: "rgba(252, 172, 63, 0.08)" } }}>
-              <ListItemIcon sx={{ color: "#fcac3f" }}>
+            <ListItemButton sx={{ color: COLORS.GOLD, borderRadius: 2, "&:hover": { bgcolor: alpha(COLORS.GOLD, 0.08) } }}>
+              <ListItemIcon sx={{ color: COLORS.GOLD }}>
                 <StarIcon />
               </ListItemIcon>
               <ListItemText primary="รายการโปรด" sx={{ "& .MuiTypography-root": { fontWeight: 600 } }} />
@@ -191,10 +193,10 @@ export default function InvestorPage() {
 
                       <Box
                         sx={{
-                          bgcolor: "rgba(164, 76, 205, 0.04)",
+                          bgcolor: alpha(COLORS.PURPLE, 0.04),
                           p: 2.5,
                           borderRadius: 3,
-                          border: "1px solid rgba(164, 76, 205, 0.08)",
+                          border: `1px solid ${alpha(COLORS.PURPLE, 0.08)}`,
                         }}
                       >
                         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 1.5 }}>
@@ -205,15 +207,15 @@ export default function InvestorPage() {
                             ข้อมูลธุรกิจพื้นฐาน:
                           </Typography>
                           <Chip 
-                            icon={<VerifiedUserIcon sx={{ fontSize: "16px !important", color: "#a44ccd !important" }} />} 
+                            icon={<VerifiedUserIcon sx={{ fontSize: "16px !important", color: `${COLORS.PURPLE} !important` }} />} 
                             label={`การันตีเงินประกัน ${post.businessInfo.guarantee}%`} 
                             size="small" 
                             sx={{ 
                               fontWeight: 700, 
                               height: 26,
-                              bgcolor: "rgba(164, 76, 205, 0.12)",
-                              color: "#a44ccd",
-                              border: "1px solid rgba(164, 76, 205, 0.3)",
+                              bgcolor: alpha(COLORS.PURPLE, 0.12),
+                              color: COLORS.PURPLE,
+                              border: `1px solid ${alpha(COLORS.PURPLE, 0.3)}`,
                               "& .MuiChip-label": { px: 1.5 }
                             }}
                           />
@@ -314,16 +316,16 @@ export default function InvestorPage() {
                             sx={{ 
                               borderRadius: 2,
                               py: 1.2,
-                                                          fontWeight: 700,
-                                                          textTransform: "none",
-                                                          boxShadow: "none",
-                                                          "&:hover": { boxShadow: "0 4px 12px rgba(164, 76, 205, 0.2)" }
-                                                        }}
-                                                      >
-                                                        รายละเอียดสำหรับการลงทุน
-                                                      </Button>
-                              
-                          <Button 
+                                                                                      fontWeight: 700,
+                                                                                      textTransform: "none",
+                                                                                      boxShadow: "none",
+                                                                                      bgcolor: COLORS.GOLD,
+                                                                                      "&:hover": { boxShadow: `0 4px 12px ${alpha(COLORS.GOLD, 0.3)}` }
+                                                                                    }}
+                                                                                  >
+                                                                                    รายละเอียดสำหรับการลงทุน
+                                                                                  </Button>
+                                                                                    <Button 
                             variant="outlined" 
                             fullWidth 
                             sx={{ 
