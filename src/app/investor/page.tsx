@@ -295,7 +295,7 @@ export default function InvestorPage() {
                               display="block"
                               sx={{ fontWeight: 600 }}
                             >
-                              ส่วนแบ่งกำไร:
+                              กำไรขั้นต้นที่ผ่านมา:
                             </Typography>
                             <Typography
                               variant="body2"
